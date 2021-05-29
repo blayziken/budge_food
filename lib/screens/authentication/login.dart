@@ -14,12 +14,10 @@ class Login extends StatelessWidget {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       style: TextStyle(
-//        fontWeight: FontWeight.bold,
         fontSize: 20.0,
       ),
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
-//            borderRadius: BorderRadius.circular(0),
           borderSide: BorderSide(color: Colors.transparent),
         ),
         prefixIcon: Icon(
@@ -51,12 +49,10 @@ class Login extends StatelessWidget {
     return TextFormField(
       obscureText: true,
       style: TextStyle(
-//        fontWeight: FontWeight.bold,
         fontSize: 20.0,
       ),
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
-//            borderRadius: BorderRadius.circular(0),
           borderSide: BorderSide(color: Colors.transparent),
         ),
         prefixIcon: Icon(
@@ -122,11 +118,11 @@ class Login extends StatelessWidget {
                   ),
                 ),
 //                Spacer(),
-                SizedBox(height: 20),
+                SizedBox(height: 0),
                 Expanded(
 //                  flex: 1,
                   child: Padding(
-                    padding: EdgeInsets.only(top: 35.0, left: 28.0),
+                    padding: EdgeInsets.only(top: 25.0, left: 28.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -155,7 +151,7 @@ class Login extends StatelessWidget {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsets.only(top: 28.0, left: 28.0, right: 28.0),
+                            EdgeInsets.only(top: 15.0, left: 28.0, right: 28.0),
                         child: Container(
                           child: Form(
                             key: _formKey,

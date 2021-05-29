@@ -3,6 +3,8 @@ import 'package:budge_food/provider/Basket.dart';
 
 class BasketItemTile extends StatefulWidget {
   final BasketItem newItem;
+//  final String foodOrSnacks;
+//  final String image;
 
   BasketItemTile(this.newItem);
 
@@ -48,13 +50,13 @@ class _BasketItemTileState extends State<BasketItemTile> {
     Size media = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(5.0),
       child: Container(
         padding: EdgeInsets.only(top: 10, left: 20, bottom: 10),
         height: media.height * 0.18,
         decoration: BoxDecoration(
-          color: Colors.yellow,
-          border: Border.all(color: Colors.black),
+//          color: Colors.yellow,
+          border: Border.all(color: Colors.grey[600]),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -62,7 +64,14 @@ class _BasketItemTileState extends State<BasketItemTile> {
             Container(
               height: 150,
               width: 120,
-              color: Colors.black,
+              decoration: BoxDecoration(
+//                color: Colors.black,
+                image: DecorationImage(
+                  image: AssetImage(
+                      'images/${widget.newItem.foodOrSnacks}/${widget.newItem.imageName}.png'),
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
             Spacer(),
             Column(
@@ -74,7 +83,8 @@ class _BasketItemTileState extends State<BasketItemTile> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        widget.newItem.shop,
+//                        widget.newItem.shop,
+                        widget.newItem.foodName,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
@@ -82,9 +92,9 @@ class _BasketItemTileState extends State<BasketItemTile> {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        widget.newItem.description,
+                        'Yummy',
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 15,
                           fontStyle: FontStyle.italic,
                           color: Colors.green,
                         ),

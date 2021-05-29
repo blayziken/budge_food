@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   static const routeName = 'splash-screen';
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushNamedAndRemoveUntil(
+            context, '/introduction-slide', (route) => false));
+  }
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        color: Colors.indigo[300],
+//        color: Colors.indigo[300],
+        color: Color(0xFF414585),
         width: double.infinity,
         height: media.height,
         child: Stack(
@@ -41,30 +56,3 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-
-//body: Container(
-//color: Colors.indigo[300],
-//width: double.infinity,
-//child: Column(
-//mainAxisAlignment: MainAxisAlignment.center,
-//children: [
-//Container(
-//height: 150,
-//width: 150,
-//decoration: BoxDecoration(
-//image: DecorationImage(
-//image: AssetImage('images/budge_logo.png'),
-//fit: BoxFit.contain,
-//)),
-//),
-//Text(
-//'Budge Food',
-//style: TextStyle(
-//fontFamily: 'Pacifico',
-//fontSize: 40,
-//fontWeight: FontWeight.w900,
-//color: Colors.white),
-//),
-//],
-//),
-//),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Basket.dart';
-import 'package:budge_food/screens/BasketScreen.dart';
 import 'package:provider/provider.dart';
 
 class AddToBasketButton extends StatelessWidget {
   final String foodName;
   final String shopName;
   final String price;
+  final String foodOrSnacks;
+  final String imageName;
 //  final String description;
 //  final String ratings;
 
@@ -15,6 +16,8 @@ class AddToBasketButton extends StatelessWidget {
     this.foodName,
     this.shopName,
     this.price,
+    this.foodOrSnacks,
+    this.imageName,
 //      this.description,
 //      this.ratings,
   }) : super(key: key);
@@ -57,11 +60,14 @@ class AddToBasketButton extends StatelessWidget {
             foodName: foodName,
             shop: shopName,
             price: price,
+            foodOrSnacks: foodOrSnacks,
+            imageName: imageName,
           );
 
           Provider.of<Basket>(context, listen: false).addToBasket(_addItem);
-          print('A');
-          Navigator.pushNamed(context, 'basket-screen');
+
+          ///TODO ADD ALERT DIALOG
+//          Navigator.pushNamed(context, 'basket-screen');
         },
       ),
     );

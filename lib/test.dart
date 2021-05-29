@@ -1,44 +1,55 @@
 //import 'package:flutter/material.dart';
-//import 'package:budge_food/models/Basket.dart';
+//import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
+//import 'package:outline_gradient_button/outline_gradient_button.dart';
 //
-//// ignore: must_be_immutable
-//class AddToBasketButton extends StatelessWidget {
-//  Basket basket = Basket();
+//class HomeTabs extends StatelessWidget {
+//  final String title;
+//
+//  HomeTabs(this.title);
 //
 //  @override
 //  Widget build(BuildContext context) {
-//    Size size = MediaQuery.of(context).size;
+//    var width = MediaQuery.of(context).size.width;
 //
+////    final kGradientBoxDecoration = BoxDecoration(
+////      gradient: LinearGradient(colors: [Colors.black, Colors.redAccent]),
+////      border: Border.all(
+////        color: Colors.purple,
+////      ),
+////    );
 //    return Container(
-//      padding: EdgeInsets.all(20),
-//      width: size.width * 0.8,
+//      padding: EdgeInsets.all(1),
+//      height: 42,
+//      width: width / 3.5,
 //      decoration: BoxDecoration(
-//        color: Colors.orange,
-//        borderRadius: BorderRadius.circular(10),
-//      ),
-//      child: InkWell(
-//        child: Row(
-//          mainAxisAlignment: MainAxisAlignment.center,
-//          children: [
-//            Icon(
-//              Icons.shopping_bag,
-//              color: Colors.white,
-//            ),
-//            SizedBox(width: 10),
-//            Text(
-//              'Add To Basket',
-//              style: TextStyle(
-//                color: Colors.white,
-//                fontSize: 18,
-//                fontWeight: FontWeight.bold,
-//              ),
-//            ),
-//          ],
+////        gradient: LinearGradient(
+////          colors: [
+////            Color(0XFF416785),
+////            Color(0XFFFFFFFF),
+////          ],
+////          begin: Alignment(-1, 0),
+////          end: Alignment(1, 1),
+////        ),
+//        borderRadius: BorderRadius.circular(30),
+//        border: Border.all(
+//          color: Colors.purple,
 //        ),
-//        onTap: () {
-//          ///TODO Implement functionality for Adding an Item to the basket
-//          print('A');
-//        },
+//      ),
+//      child: Container(
+//        decoration: BoxDecoration(
+////          color: Colors.red,
+////        gradient: LinearGradient(colors: [Colors.black, Colors.redAccent]),
+//          borderRadius: BorderRadius.circular(30),
+//          border: Border.all(
+//            color: Colors.green,
+//          ),
+//        ),
+//        child: Tab(
+//          child: Text(
+//            title,
+//            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+//          ),
+//        ),
 //      ),
 //    );
 //  }

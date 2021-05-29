@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class NewHallHomeGrid extends StatelessWidget {
+class DliGrid extends StatelessWidget {
   final String restaurantName;
   final String description;
-  final String newHallName;
+  final String educationName;
 
-  NewHallHomeGrid(this.restaurantName, this.description, this.newHallName);
+  DliGrid(this.restaurantName, this.description, this.educationName);
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,14 @@ class NewHallHomeGrid extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 0.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.grey,
                   radius: 90,
-                  backgroundImage: AssetImage('images/food/$newHallName.png'),
+                  backgroundImage: AssetImage('images/food/$educationName.png'),
                 ),
               ),
 //            Spacer(),
@@ -70,7 +71,7 @@ class NewHallHomeGrid extends StatelessWidget {
                   ],
                 ),
               ),
-              Spacer(),
+//            Spacer(),
             ],
           ),
         ),

@@ -2,7 +2,8 @@ import 'package:budge_food/screens/SpecialsDetail.dart';
 import 'package:budge_food/screens/authentication/login.dart';
 import 'package:budge_food/screens/authentication/signup.dart';
 import 'package:budge_food/screens/home.dart';
-import 'package:budge_food/screens/splash.dart';
+import 'package:budge_food/screens/splashs/introduction.dart';
+import 'file:///C:/Users/Administrator/AndroidStudioProjects/budge_food/lib/screens/splashs/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/BasketScreen.dart';
@@ -18,14 +19,15 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => Basket(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Budge Food',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen(),
+        home: Login(),
         routes: {
           //Splash & Authentication Route
           SplashScreen.routeName: (context) => SplashScreen(),
+          IntroductionSlide.routeName: (context) => IntroductionSlide(),
           Login.routeName: (context) => Login(),
           SignUp.routeName: (context) => SignUp(),
 

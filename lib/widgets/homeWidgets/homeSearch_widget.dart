@@ -14,20 +14,19 @@ class HomeSearchWidget extends StatelessWidget {
       height: 50,
       width: media.width * 0.7,
       decoration: BoxDecoration(
-//                            color: Colors.red,
+//        color: Colors.red,
         borderRadius: BorderRadius.circular(25),
         border: Border.all(color: Colors.black),
       ),
       child: TextField(
         decoration: InputDecoration(
             hintText: "Search",
-            hintStyle: TextStyle(fontSize: 20),
+            hintStyle: TextStyle(fontSize: 20, color: Colors.grey),
             prefixIcon: Icon(
               Icons.search,
               size: 30,
-//                                  color: Colors.green,
+              color: Color(0xFF416785),
             ),
-//                                icon: Icon(Icons.search, size: 30),
             border: InputBorder.none),
       ),
     );

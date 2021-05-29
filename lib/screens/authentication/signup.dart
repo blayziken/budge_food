@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 
+import '../home.dart';
+
 class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
@@ -324,7 +326,13 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, '/login');
+//                        Navigator.pushReplacementNamed(context, '/login');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
                       },
                     ),
                   ),

@@ -10,22 +10,27 @@ class SpecialsDetailScreen extends StatelessWidget {
   final String description;
   final String price;
   final double ratings;
+//  final String foodOrSnacks;
+  final String imageName;
 
   SpecialsDetailScreen(
       {this.shop,
       this.specialName,
       this.description,
       this.price,
-      this.ratings});
+      this.ratings,
+//      this.foodOrSnacks,
+      this.imageName});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    String foodOrSnacks = 'snacks';
 
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.orange,
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.orange,
         elevation: 0,
         leading: IconButton(
           icon: Icon(
@@ -39,7 +44,7 @@ class SpecialsDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ItemImage(imgSrc: 'images/budge_logo.png'),
+          ItemImage(imgSrc: 'images/snacks/$imageName.png'),
           SizedBox(height: 10),
           Expanded(
             child: Container(
@@ -74,6 +79,8 @@ class SpecialsDetailScreen extends StatelessWidget {
                     shopName: shop,
                     price: price,
                     foodName: specialName,
+                    imageName: specialName.toLowerCase(),
+                    foodOrSnacks: foodOrSnacks,
                   ),
                 ],
               ),
@@ -191,9 +198,9 @@ class ItemImage extends StatelessWidget {
 
     return Image.asset(
       imgSrc,
-      height: size.height * 0.25,
+      height: size.height * 0.4,
       width: double.infinity,
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
     );
   }
 }

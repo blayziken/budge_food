@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Administrator/AndroidStudioProjects/budge_food/lib/widgets/homeWidgets/homeSearch_widget.dart';
+
+import 'homeWidgets/homeSearch_widget.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({

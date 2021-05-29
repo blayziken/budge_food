@@ -1,6 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:budge_food/screens/BasketScreen.dart';
-import 'package:budge_food/widgets/basketsWidgets/basket_item.dart';
 
 class BasketItem {
   final String shop;
@@ -8,8 +6,12 @@ class BasketItem {
   final String description;
   final String price;
 //  final double ratings;
+  final String imageName;
+  final String foodOrSnacks;
 
   BasketItem({
+    this.foodOrSnacks,
+    this.imageName,
     this.foodName,
     this.shop,
     this.description,
@@ -54,6 +56,8 @@ class Basket with ChangeNotifier {
         shop: basketItem.shop,
         price: basketItem.price,
         description: basketItem.description,
+        imageName: basketItem.imageName,
+        foodOrSnacks: basketItem.foodOrSnacks,
       ),
     );
     notifyListeners();

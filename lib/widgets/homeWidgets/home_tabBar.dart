@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:budge_food/widgets/homeWidgets/HomeTabs.dart';
@@ -19,20 +20,35 @@ class HomeTabBar extends StatelessWidget {
       flex: 1,
       child: Container(
         child: TabBar(
-          unselectedLabelColor: Colors.blueGrey,
+          unselectedLabelColor: Color(0xFF416785),
           labelColor: Colors.white,
           labelPadding: EdgeInsets.only(right: 15),
           isScrollable: true,
           controller: _tabController,
           indicatorSize: TabBarIndicatorSize.tab,
-          indicator: BubbleTabIndicator(
-            indicatorHeight: 40,
-            indicatorColor: Colors.blueGrey,
-            tabBarIndicatorSize: TabBarIndicatorSize.tab,
-//                      indicatorRadius: 1,
-            insets: EdgeInsets.only(top: -1, left: 1, right: 16, bottom: 0),
-//                        padding: EdgeInsets.symmetric(vertical: 30),
+          indicatorPadding:
+              EdgeInsets.only(top: 1, left: 2.2, right: 20, bottom: 3),
+
+          indicator: ShapeDecoration(
+            color: Color(0xFF416785),
+
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+//              borderSide: BorderSide(
+//                color: Colors.transparent,
+//                width: 4.0,
+//                style: BorderStyle.solid
+//              )
+            ),
+//            gradient: LinearGr
           ),
+//          BubbleTabIndicator(
+//            indicatorHeight: 40,
+//            indicatorColor: Color(0xFF416785),
+//            tabBarIndicatorSize: TabBarIndicatorSize.tab,
+////            insets: EdgeInsets.only(top: -1, left: 1, right: 16, bottom: 0),
+//            insets: EdgeInsets.only(top: -1, left: 2, right: 16, bottom: 1),
+//          ),
           tabs: <Widget>[
             HomeTabs('Specials'),
             HomeTabs('Campus'),
@@ -65,12 +81,7 @@ class TabBarViewWidget extends StatelessWidget {
           Specials(),
           Campus(),
           NewHall(),
-          Center(
-            child: Text(
-              'DLI',
-              style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
-            ),
-          ),
+          Dli(),
           Education(),
         ],
       ),
