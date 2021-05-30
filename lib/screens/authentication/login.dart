@@ -105,13 +105,13 @@ class Login extends StatelessWidget {
                   padding: EdgeInsets.only(top: 50.0),
                   child: Center(
                     child: Container(
-                      height: 200,
-                      width: 200,
+                      height: 150,
+                      width: 150,
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+//                        color: Colors.grey,
                         image: DecorationImage(
-                          image: AssetImage('images/budge_logo.png'),
-                          fit: BoxFit.contain,
+                          image: AssetImage('images/coloured_logo.png'),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -167,20 +167,22 @@ class Login extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Spacer(),
                       Padding(
                         padding: const EdgeInsets.only(left: 28.0, top: 20),
                         child: Text(
                           'Forgot Password?',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.red,
                             fontSize: 17,
                             fontWeight: FontWeight.w600,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
                       ),
+                      Spacer(),
                       Padding(
-                        padding: const EdgeInsets.only(right: 28.0, top: 10),
+                        padding: EdgeInsets.only(right: 28.0, top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
@@ -219,6 +221,7 @@ class Login extends StatelessWidget {
                           ],
                         ),
                       ),
+                      Spacer(),
                     ],
                   ),
                 ),

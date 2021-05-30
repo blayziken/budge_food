@@ -188,10 +188,10 @@ class _SignUpState extends State<SignUp> {
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+//                      color: Colors.grey,
                       image: DecorationImage(
-                        image: AssetImage('images/budge_logo.png'),
-                        fit: BoxFit.contain,
+                        image: AssetImage('images/coloured_logo.png'),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

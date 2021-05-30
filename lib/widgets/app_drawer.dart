@@ -14,22 +14,26 @@ class AppDrawer extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.lightBlueAccent,
-                          radius: 30,
-                          backgroundImage: AssetImage('images/budge_logo.png'),
-                        ),
-                        SizedBox(width: 5),
-                        Text(
-                          'Budge Food',
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.blueGrey[700],
+                    Padding(
+                      padding: EdgeInsets.only(left: 15.0),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 30,
+                            backgroundImage:
+                                AssetImage('images/coloured_logo.png'),
                           ),
-                        )
-                      ],
+                          SizedBox(width: 15),
+                          Text(
+                            'Budge Food',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.blueGrey[700],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 10),
                     Divider(

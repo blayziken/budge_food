@@ -14,13 +14,23 @@ Widget emptyBasketOrNot(context) {
       flex: 0,
       child: Center(
         child: Container(
-          color: Colors.black,
           height: 250,
           width: 250,
-          child: Text(
-            'Empty',
-            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+          child: Center(
+            child: Text(
+              'Empty',
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 30,
+                color: Colors.black,
+              ),
+            ),
           ),
+          decoration: BoxDecoration(
+              color: Colors.black,
+              image: DecorationImage(
+                image: AssetImage('images/empty_cart.jpg'),
+              )),
         ),
       ),
     );

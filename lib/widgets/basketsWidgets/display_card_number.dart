@@ -11,11 +11,17 @@ class DisplayCardNumber extends StatelessWidget {
 //                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          height: 30,
-          width: 30,
-          color: Colors.black,
+          height: 35,
+          width: 35,
+          decoration: BoxDecoration(
+//            color: Colors.black,
+            image: DecorationImage(
+              image: AssetImage('images/master-card.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
-        SizedBox(width: 20),
+        SizedBox(width: 30),
         Text(
           '4012*******81',
           style: TextStyle(
@@ -25,9 +31,15 @@ class DisplayCardNumber extends StatelessWidget {
         ),
         Spacer(),
         Container(
-          height: 30,
-          width: 30,
-          color: Colors.black,
+          height: 35,
+          width: 35,
+          decoration: BoxDecoration(
+//            color: Colors.black,
+            image: DecorationImage(
+              image: AssetImage('images/credit_card.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
       ],
     );
