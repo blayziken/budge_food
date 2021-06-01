@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:budge_food/provider/Basket.dart';
 
-class OrderTotalColumn extends StatelessWidget {
+class OrderTotalColumn extends StatefulWidget {
   const OrderTotalColumn({
     Key key,
   }) : super(key: key);
 
   @override
+  _OrderTotalColumnState createState() => _OrderTotalColumnState();
+}
+
+class _OrderTotalColumnState extends State<OrderTotalColumn> {
+  @override
   Widget build(BuildContext context) {
+    int subTotal;
+    int commission = 200;
+    int totalBasketAmount;
+
+    setState(() {
+      subTotal = Provider.of<Basket>(context, listen: false).totalBasketAmount;
+
+      totalBasketAmount = subTotal + commission;
+    });
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,7 +50,7 @@ class OrderTotalColumn extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '2400',
+                    '$subTotal',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 18,
@@ -53,7 +70,7 @@ class OrderTotalColumn extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '200',
+                    '$commission',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 18,
@@ -73,7 +90,7 @@ class OrderTotalColumn extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '2600',
+                    '$totalBasketAmount',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 18,

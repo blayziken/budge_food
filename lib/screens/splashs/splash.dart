@@ -12,7 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 3),
+        Duration(seconds: 5),
         () => Navigator.pushNamedAndRemoveUntil(
             context, '/introduction-slide', (route) => false));
   }

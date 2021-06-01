@@ -2,6 +2,7 @@ import 'package:budge_food/widgets/basketsWidgets/bottom_basketDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Basket.dart';
 import 'package:budge_food/widgets/basketsWidgets/widgets_functions.dart';
+import 'package:provider/provider.dart';
 
 class BasketScreen extends StatefulWidget {
   static const routeName = 'basket-screen';
@@ -15,31 +16,40 @@ class _BasketScreenState extends State<BasketScreen> {
   final myAddressController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    print(Provider.of<Basket>(context, listen: false).getLength());
+  }
+
+  @override
   Widget build(BuildContext context) {
     String address = myAddressController.text;
+//    basket.basketList.
     return Scaffold(
       appBar: basketAppBar(context),
-      body: Container(
-        padding: EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 0,
-              child: Text(
-                'My Basket',
-                style: TextStyle(
-                  color: Colors.blueGrey,
-                  fontSize: 20,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 0,
+                child: Text(
+                  'My Basket',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 20,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            emptyBasketOrNot(context),
-            SizedBox(height: 10),
-            BottomBasketDetails(
-                address: address, myAddressController: myAddressController),
-          ],
+              SizedBox(height: 10),
+              emptyBasketOrNot(context),
+              SizedBox(height: 10),
+              BottomBasketDetails(
+                  address: address, myAddressController: myAddressController),
+            ],
+          ),
         ),
       ),
     );

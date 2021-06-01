@@ -9,7 +9,7 @@ Widget emptyBasketOrNot(context) {
   final basketData = Provider.of<Basket>(context);
   Size size = MediaQuery.of(context).size;
 
-  if (basketData.basketList.isEmpty) {
+  if (basketData.basketItems.isEmpty) {
     return Expanded(
       flex: 0,
       child: Center(
@@ -27,10 +27,10 @@ Widget emptyBasketOrNot(context) {
             ),
           ),
           decoration: BoxDecoration(
-              color: Colors.black,
+//              color: Colors.black,
               image: DecorationImage(
-                image: AssetImage('images/empty_cart.jpg'),
-              )),
+            image: AssetImage('images/empty_cart.jpg'),
+          )),
         ),
       ),
     );
@@ -41,9 +41,9 @@ Widget emptyBasketOrNot(context) {
         height: size.height * 0.39,
 //        color: Colors.teal,
         child: ListView.builder(
-          itemCount: basketData.basketList.length,
+          itemCount: basketData.basketItems.length,
           itemBuilder: (context, index) =>
-              BasketItemTile(basketData.basketList[index]),
+              BasketItemTile(basketData.basketItems[index]),
         ),
       ),
     );
