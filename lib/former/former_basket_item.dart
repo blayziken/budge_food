@@ -33,7 +33,6 @@ class _BasketItemTileState extends State<BasketItemTile> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     price = int.parse(widget.newItem.price);
     newPriceBasedOnQty = price;
