@@ -1,3 +1,4 @@
+import 'package:budge_food/widgets/materialDialog/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Basket.dart';
 import 'package:provider/provider.dart';
@@ -62,14 +63,16 @@ class AddToBasketButton extends StatelessWidget {
             foodOrSnacks: foodOrSnacks,
             imageName: imageName,
           );
-          print('dddddddddddddddddddd');
 
           Provider.of<Basket>(context, listen: false).addToBasket(_addItem);
 
-          print(Provider.of<Basket>(context, listen: false).getLength());
+          print(
+              'Items in basket: ${Provider.of<Basket>(context, listen: false).getLength()}');
+
+          materialDialog(context);
 
           ///TODO ADD ALERT DIALOG
-//          Navigator.pushNamed(context, 'basket-screen');
+          //materialDialog(context, restaurantName)
         },
       ),
     );
