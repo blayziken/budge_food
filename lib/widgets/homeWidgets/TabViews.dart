@@ -30,15 +30,15 @@ class Campus extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        CampusHomeGrid('Mavis Campus', ' Scaling up\nsatisfaction', 'mavis'),
+        CampusHomeGrid('Mavis', ' Scaling up\nsatisfaction', 'mavis'),
         CampusHomeGrid('Calabar Kitchen',
-            'Where there\'s coke,\n there\'s hospitality', '2001'),
+            'Where there\'s coke,\n there\'s hospitality', 'calabar kitchen'),
 
         ///TODO CHANGE THIS IMAGE NAME (2001)
         CampusHomeGrid('Blessed', 'Where there\'s coke,\n there\'s hospitality',
             'blessed'),
         CampusHomeGrid(
-            'Shop 10', 'Keeping it spicy \n    for a spice', 'shop10'),
+            'Shop 10', 'Keeping it spicy \n    for a spice', 'shop 10'),
       ],
     );
   }
@@ -53,9 +53,9 @@ class NewHall extends StatelessWidget {
         NewHallHomeGrid('2001 Cafeteria',
             'Where there\'s coke,\n there\'s hospitality', '2001'),
         NewHallHomeGrid('Unilag Bakery',
-            'Freshly baked bread, \n baked to perfection', 'unilag_bakery'),
+            'Freshly baked bread, \n baked to perfection', 'unilag bakery'),
         NewHallHomeGrid('Korede Spaghetti',
-            'Keeping it spicy \n    for a spice', 'korede_spaghetti'),
+            'Keeping it spicy \n    for a spice', 'korede spaghetti'),
       ],
     );
   }

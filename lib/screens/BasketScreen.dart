@@ -2,11 +2,9 @@ import 'package:budge_food/widgets/basketsWidgets/bottom_basketDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Basket.dart';
 import 'package:budge_food/widgets/basketsWidgets/widgets_functions.dart';
-import 'package:provider/provider.dart';
 
 class BasketScreen extends StatefulWidget {
   static const routeName = 'basket-screen';
-
   @override
   _BasketScreenState createState() => _BasketScreenState();
 }
@@ -23,7 +21,6 @@ class _BasketScreenState extends State<BasketScreen> {
   @override
   Widget build(BuildContext context) {
     String address = myAddressController.text;
-//    basket.basketList.
     return Scaffold(
       appBar: basketAppBar(context),
       body: SingleChildScrollView(

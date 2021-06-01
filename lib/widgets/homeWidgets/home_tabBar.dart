@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:budge_food/widgets/homeWidgets/HomeTabs.dart';
 
 import 'TabViews.dart';
@@ -31,16 +30,9 @@ class HomeTabBar extends StatelessWidget {
 
           indicator: ShapeDecoration(
             color: Color(0xFF416785),
-
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
-//              borderSide: BorderSide(
-//                color: Colors.transparent,
-//                width: 4.0,
-//                style: BorderStyle.solid
-//              )
             ),
-//            gradient: LinearGr
           ),
 //          BubbleTabIndicator(
 //            indicatorHeight: 40,
