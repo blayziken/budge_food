@@ -111,14 +111,7 @@ class _BasketItemTileState extends State<BasketItemTile> {
       onDismissed: (direction) {
         Provider.of<Basket>(context, listen: false)
             .deleteItemFromBasket(widget.newItem.id);
-        print(Provider.of<Basket>(context, listen: false).getLength());
-//        basketData.deleteItemFromBasket(itemId);
-
-//        setState(() {
-//          print(basketData.basketItems.length);
-////          Provider.of<Basket>(context, listen: false).
-//        });
-      },
+        },
     );
   }
 }

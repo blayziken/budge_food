@@ -18,7 +18,6 @@ class _BasketScreenState extends State<BasketScreen> {
   @override
   void initState() {
     super.initState();
-    print(Provider.of<Basket>(context, listen: false).getLength());
   }
 
   @override

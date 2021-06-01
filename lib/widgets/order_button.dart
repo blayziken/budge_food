@@ -55,7 +55,6 @@ class AddToBasketButton extends StatelessWidget {
           ],
         ),
         onTap: () {
-          ///TODO Implement functionality for Adding an Item to the basket
           BasketItem _addItem = BasketItem(
             foodName: foodName,
             shop: shopName,
@@ -63,8 +62,11 @@ class AddToBasketButton extends StatelessWidget {
             foodOrSnacks: foodOrSnacks,
             imageName: imageName,
           );
+          print('dddddddddddddddddddd');
 
           Provider.of<Basket>(context, listen: false).addToBasket(_addItem);
+
+          print(Provider.of<Basket>(context, listen: false).getLength());
 
           ///TODO ADD ALERT DIALOG
 //          Navigator.pushNamed(context, 'basket-screen');
