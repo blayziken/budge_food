@@ -21,8 +21,8 @@ dependencies:
   flutter_gradient_colors: ^1.0.0
   outline_gradient_button: ^2.0.0+1
   lottie: ^1.0.1
-  firebase_auth: ^1.2.0
-
+#  firebase_auth: ^1.2.0
+#
 
 
 
