@@ -9,6 +9,7 @@ class BasketItem {
 //  final double ratings;
   final String imageName;
   final String foodOrSnacks;
+  final List foodOrder;
 
   BasketItem({
     this.id,
@@ -18,6 +19,7 @@ class BasketItem {
     this.shop,
     this.description,
     this.price,
+    this.foodOrder,
 //    this.ratings,
   });
 }
@@ -60,6 +62,7 @@ class Basket with ChangeNotifier {
         description: basketItem.description,
         imageName: basketItem.imageName,
         foodOrSnacks: basketItem.foodOrSnacks,
+        foodOrder: basketItem.foodOrder,
       ),
     );
     notifyListeners();
