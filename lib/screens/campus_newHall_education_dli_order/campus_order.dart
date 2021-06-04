@@ -1,4 +1,7 @@
+import 'package:budge_food/provider/Basket.dart';
+import 'package:budge_food/widgets/materialDialog/dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CampusOrderScreen extends StatefulWidget {
   static const routeName = 'campus-order-screen';
@@ -30,9 +33,17 @@ class _CampusOrderScreenState extends State<CampusOrderScreen> {
           child: Column(
             children: [
               CampusOrderImage(widget: widget),
-              Text(
-                'Order Details (${widget.campusName})',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              Column(
+                children: [
+                  Text(
+                    '${widget.campusName}',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '(Order Details)',
+                    style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                  ),
+                ],
               ),
               FoodListView(foodList: foodList),
               Expanded(
@@ -96,6 +107,34 @@ class _CampusOrderScreenState extends State<CampusOrderScreen> {
 
                         print(order.length);
                         print(order);
+
+                        doneOrderMaterialDialog(
+                          context,
+                          cancelFunction: () {
+                            order.clear();
+                            Navigator.pop(context);
+                            print(order);
+                          },
+                          addToBasketFunction: () {
+                            BasketItem _addFoodItem = BasketItem(
+                              foodName: widget.campusName,
+                              shop: widget.campusName,
+                              price: totalAmount.toString(),
+                              foodOrSnacks: 'food',
+                              imageName: widget.campusName.toLowerCase(),
+                              foodOrder: order,
+                            );
+
+                            Provider.of<Basket>(context, listen: false)
+                                .addToBasket(_addFoodItem);
+
+                            print(
+                                'Items in basket: ${Provider.of<Basket>(context, listen: false).getLength()}');
+
+                            Navigator.pushReplacementNamed(
+                                context, 'home-screen');
+                          },
+                        );
                       },
                     ),
                     Spacer(),
