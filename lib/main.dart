@@ -2,6 +2,7 @@ import 'package:budge_food/screens/SpecialsDetail.dart';
 import 'package:budge_food/screens/authentication/login.dart';
 import 'package:budge_food/screens/authentication/signup.dart';
 import 'package:budge_food/screens/campus_newHall_education_dli_order/campus_order.dart';
+import 'package:budge_food/screens/campus_newHall_education_dli_order/order_details.dart';
 import 'package:budge_food/screens/home.dart';
 import 'package:budge_food/screens/splashs/introduction.dart';
 import 'package:budge_food/screens/splashs/splash.dart';
@@ -42,6 +43,8 @@ class MyApp extends StatelessWidget {
 
           //Basket Screen
           BasketScreen.routeName: (context) => BasketScreen(),
+
+          FoodOrderDetails.routeName: (context) => FoodOrderDetails(),
         },
       ),
     );
