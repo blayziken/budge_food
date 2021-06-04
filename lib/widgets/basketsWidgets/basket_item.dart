@@ -1,4 +1,4 @@
-import 'package:budge_food/widgets/basketsWidgets/widgets_functions.dart';
+import 'package:budge_food/screens/campus_newHall_education_dli_order/order_details.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Basket.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +18,7 @@ class _BasketItemTileState extends State<BasketItemTile> {
 //    final basketData = Provider.of<Basket>(context);
 //    final itemId = ModalRoute.of(context).settings.arguments as String;
     Size media = MediaQuery.of(context).size;
+    List foodOrder = widget.newItem.foodOrder;
 
     return Dismissible(
 //      key: ValueKey(widget.newItem.id),
@@ -76,13 +77,27 @@ class _BasketItemTileState extends State<BasketItemTile> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Text(
-                          'Yummy',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontStyle: FontStyle.italic,
-                            color: Colors.green,
+                        InkWell(
+                          child: Text(
+                            'Check Details..',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.green,
+                            ),
                           ),
+                          onTap: () {
+                            print('details');
+                            print(widget.newItem.foodOrder);
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    FoodOrderDetails(order: foodOrder),
+                              ),
+                            );
+                          },
                         ),
                         SizedBox(height: 15),
                         Text(
