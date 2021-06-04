@@ -29,14 +29,14 @@ class AddToBasketButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      padding: EdgeInsets.all(20),
-      width: size.width * 0.8,
-      decoration: BoxDecoration(
-        color: Colors.orange,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: InkWell(
+    return InkWell(
+      child: Container(
+        padding: EdgeInsets.all(20),
+        width: size.width * 0.8,
+        decoration: BoxDecoration(
+          color: Colors.orange,
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -55,26 +55,24 @@ class AddToBasketButton extends StatelessWidget {
             ),
           ],
         ),
-        onTap: () {
-          BasketItem _addItem = BasketItem(
-            foodName: foodName,
-            shop: shopName,
-            price: price,
-            foodOrSnacks: foodOrSnacks,
-            imageName: imageName,
-          );
-
-          Provider.of<Basket>(context, listen: false).addToBasket(_addItem);
-
-          print(
-              'Items in basket: ${Provider.of<Basket>(context, listen: false).getLength()}');
-
-          materialDialog(context);
-
-          ///TODO ADD ALERT DIALOG
-          //materialDialog(context, restaurantName)
-        },
       ),
+      onTap: () {
+        BasketItem _addItem = BasketItem(
+          foodName: foodName,
+          shop: shopName,
+          price: price,
+          foodOrSnacks: foodOrSnacks,
+          imageName: imageName,
+          foodOrder: [foodName],
+        );
+
+        Provider.of<Basket>(context, listen: false).addToBasket(_addItem);
+
+        print(
+            'Items in basket: ${Provider.of<Basket>(context, listen: false).getLength()}');
+
+        materialDialog(context);
+      },
     );
   }
 }
