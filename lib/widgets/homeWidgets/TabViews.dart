@@ -49,7 +49,7 @@ class NewHall extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        NewHallHomeGrid('Mavis New Hall', ' Scaling up\nsatisfaction', 'mavis'),
+        NewHallHomeGrid('Mavis', ' Scaling up\nsatisfaction', 'mavis'),
         NewHallHomeGrid('2001 Cafeteria',
             'Where there\'s coke,\n there\'s hospitality', '2001'),
         NewHallHomeGrid('Unilag Bakery',
@@ -79,15 +79,10 @@ class Education extends StatelessWidget {
     return ListView(
       children: [
         EducationGrid(
-            'Olaiya', 'Where there\'s coke,\n there\'s hospitality', 'mavis'),
+            'Olaiya', 'Where there\'s coke,\n there\'s hospitality', 'olaiya'),
         EducationGrid('Olaiya (Swallow)',
-            'Where there\'s coke,\n there\'s hospitality', 'olaiya'),
+            'Where there\'s coke,\n there\'s hospitality', 'olaiya (swallow)'),
       ],
     );
   }
 }
-
-//gradient: LinearGradient(colors: [
-//Color(0XFF416785),
-//Color(0XFFFFFFFF),
-//], begin: Alignment(-1, 0), end: Alignment(1, 1)),

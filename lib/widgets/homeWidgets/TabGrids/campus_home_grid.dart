@@ -1,4 +1,4 @@
-import 'package:budge_food/screens/campus_newHall_education_dli_order/campus_order.dart';
+import 'package:budge_food/screens/campus_newHall_education_dli_order/food_order.dart';
 import 'package:flutter/material.dart';
 
 class CampusHomeGrid extends StatelessWidget {
@@ -83,7 +83,7 @@ class CampusHomeGrid extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CampusOrderScreen(campusName: restaurantName),
+            builder: (context) => FoodOrderScreen(campusName: restaurantName),
           ),
         );
       },
