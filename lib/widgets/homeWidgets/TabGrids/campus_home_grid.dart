@@ -13,7 +13,7 @@ class CampusHomeGrid extends StatelessWidget {
     var media = MediaQuery.of(context).size;
     return InkWell(
       child: Padding(
-        padding: EdgeInsets.only(bottom: 25.0),
+        padding: EdgeInsets.only(bottom: 25.0, left: 10, right: 10),
         child: Container(
           padding: EdgeInsets.all(1.5),
           decoration: BoxDecoration(
@@ -31,7 +31,7 @@ class CampusHomeGrid extends StatelessWidget {
           ),
           child: Container(
             height: media.height / 5,
-            padding: EdgeInsets.only(top: 20, bottom: 20, right: 20),
+            padding: EdgeInsets.only(top: 20, bottom: 20, right: 0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -42,7 +42,7 @@ class CampusHomeGrid extends StatelessWidget {
                   padding: EdgeInsets.only(left: 0.0),
                   child: CircleAvatar(
                     backgroundColor: Colors.grey,
-                    radius: 90,
+                    radius: 70,
                     backgroundImage: AssetImage('images/food/$campusName.png'),
                   ),
                 ),

@@ -11,6 +11,7 @@ class SpecialsHomeGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return InkWell(
       child: Container(
 //        padding: EdgeInsets.only(left: 15, right: 15),
@@ -33,10 +34,12 @@ class SpecialsHomeGrid extends StatelessWidget {
             children: [
 //          Spacer(),
               Container(
-                height: 160,
-                width: 160,
+//                height: 160,
+//                width: 160,
+                height: size.height * 0.185,
+                width: size.width * 0.4,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+//                  color: Colors.grey,
                   image: DecorationImage(
                     image: AssetImage('images/snacks/$imageName.png'),
                     fit: BoxFit.cover,
