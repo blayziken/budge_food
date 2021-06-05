@@ -25,10 +25,15 @@ class CustomAppBar extends StatelessWidget {
                 _scaffoldKey.currentState.openDrawer();
               },
             ),
-            SizedBox(width: 5),
+//            SizedBox(width: 5),
             HomeSearchWidget(),
-            SizedBox(width: 5),
-            Icon(Icons.shopping_cart, size: 40),
+//            SizedBox(width: 5),
+            InkWell(
+              child: Icon(Icons.shopping_cart, size: 40),
+              onTap: () {
+                Navigator.pushNamed(context, 'basket-screen');
+              },
+            ),
           ],
         ),
       ),
