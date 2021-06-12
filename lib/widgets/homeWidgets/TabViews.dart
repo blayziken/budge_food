@@ -33,8 +33,6 @@ class Campus extends StatelessWidget {
         CampusHomeGrid('Mavis', ' Scaling up\nsatisfaction', 'mavis'),
         CampusHomeGrid('Calabar Kitchen',
             'Where there\'s coke,\n there\'s hospitality', 'calabar kitchen'),
-
-        ///TODO CHANGE THIS IMAGE NAME (2001)
         CampusHomeGrid('Blessed', 'Where there\'s coke,\n there\'s hospitality',
             'blessed'),
         CampusHomeGrid(
