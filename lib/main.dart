@@ -1,4 +1,5 @@
 import 'package:budge_food/provider/Orders.dart';
+import 'package:budge_food/provider/auth.dart';
 import 'package:budge_food/screens/SpecialsDetail.dart';
 import 'package:budge_food/screens/authentication/login.dart';
 import 'package:budge_food/screens/authentication/signup.dart';
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (context) => Auth(),
+        ),
         ChangeNotifierProvider(
           create: (context) => Basket(),
         ),

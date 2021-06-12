@@ -1,5 +1,7 @@
+import 'package:budge_food/provider/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:provider/provider.dart';
 
 import '../home.dart';
 
@@ -10,12 +12,15 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String _name;
-  String _email;
-  String _password;
-  String _confirmPassword;
+  var _isLoading = false;
+  String name;
+  String email;
+  String password;
+//  String _confirmPassword;
 
-  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _passwordController = TextEditingController();
+//  final TextEditingController _confirmPass = TextEditingController();
 
   Widget _buildName() {
     return TextFormField(
@@ -47,7 +52,7 @@ class _SignUpState extends State<SignUp> {
         return null;
       },
       onSaved: (String value) {
-        _name = value;
+        name = value;
       },
     );
   }
@@ -77,20 +82,21 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
       validator: (String value) {
-        if (value.isEmpty) {
+        if (value.isEmpty || !value.contains('@')) {
           return 'Email required';
         }
 
         return null;
       },
       onSaved: (String value) {
-        _email = value;
+        email = value;
       },
     );
   }
 
   Widget _buildPassword() {
     return TextFormField(
+      controller: _passwordController,
       obscureText: true,
       style: TextStyle(
         fontSize: 17.0,
@@ -112,20 +118,24 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
       validator: (String value) {
+//        password = value;
         if (value.isEmpty) {
           return 'Password required';
+        } else if (value.length < 8) {
+          return 'Password must be at least 8 characters long';
+        } else {
+          return null;
         }
-
-        return null;
       },
-      onSaved: (String value) {
-        _password = value;
+      onSaved: (value) {
+        password = value;
       },
     );
   }
 
   Widget _buildConfirmPassword() {
     return TextFormField(
+//      controller: _confirmPass,
       obscureText: true,
       style: TextStyle(
         fontSize: 17.0,
@@ -149,16 +159,41 @@ class _SignUpState extends State<SignUp> {
       validator: (String value) {
         if (value.isEmpty) {
           return 'Password required';
-        } else if (value != _password) {
-          return 'Password\'s don\'t match';
+        } else if (value != _passwordController.text) {
+          return 'Password must be the same as above';
+        } else {
+          return null;
         }
-
-        return null;
-      },
-      onSaved: (String value) {
-        _confirmPassword = value;
       },
     );
+  }
+
+  Future<void> _submit() async {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+    _formKey.currentState.save();
+
+    setState(() {
+      _isLoading = true;
+    });
+
+//
+    print(name);
+    print(email);
+    print(password);
+
+    await Provider.of<Auth>(context, listen: false)
+        .signUp(email, password)
+        .catchError((err) {
+      print(err);
+    }).then((_) {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+
+//                          Na
   }
 
   @override
@@ -195,19 +230,6 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-//              Padding(
-//                padding:  EdgeInsets.only(left: 15.0, top: 20),
-//                child: Container(
-//                  child: IconButton(
-//                    icon: Icon(
-//                      Icons.arrow_back,
-//                      color: Colors.black,
-//                      size: 35.0,
-//                    ),
-//                    onPressed: () => Navigator.pop(context),
-//                  ),
-//                ),
-//              ),
               Expanded(
                 flex: 0,
                 child: Padding(
@@ -231,7 +253,7 @@ class _SignUpState extends State<SignUp> {
                   child: Padding(
                       padding: EdgeInsets.only(left: 40, right: 40, top: 25),
                       child: Form(
-                        key: _formKey2,
+                        key: _formKey,
                         child: Column(
 //                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -255,49 +277,41 @@ class _SignUpState extends State<SignUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      GradientButton(
-                        increaseHeightBy: 20,
-                        increaseWidthBy: 50,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              'Signup',
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
+                      _isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                backgroundColor: Colors.orange,
                               ),
+                            )
+                          : GradientButton(
+                              increaseHeightBy: 20,
+                              increaseWidthBy: 50,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    'Signup',
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    size: 30.0,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                              callback: _submit,
+                              gradient: Gradients.jShine,
                             ),
-                            Icon(
-                              Icons.arrow_forward,
-                              size: 30.0,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                        callback: () {
-                          if (!_formKey2.currentState.validate()) {
-                            return;
-                          }
-
-                          _formKey2.currentState.save();
-
-                          print(_name);
-                          print(_email);
-                          print(_password);
-                          print(_confirmPassword);
-                        },
-                        gradient: Gradients.jShine,
-                      ),
                     ],
                   ),
                 ),
               ),
-//              Spacer(),
-              SizedBox(
-                height: 20.0,
-              ),
+              Spacer(),
               Expanded(
                 flex: 0,
                 child: Container(
@@ -310,7 +324,7 @@ class _SignUpState extends State<SignUp> {
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
-                            fontSize: 17.0,
+                            fontSize: 15.0,
                           ),
                           children: <TextSpan>[
                             TextSpan(
@@ -336,7 +350,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              Spacer(),
+              SizedBox(height: 10),
             ],
           ),
         ),
