@@ -7,12 +7,10 @@ class Auth with ChangeNotifier {
   DateTime _expiryDate; //Expiry Date of the Token
   String _userId;
 
-  //SIGN UP METHOD
-  Future<void> signUp(String email, String password) async {
-//    const url =
-//        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDvpxpoUDSN3cyJPpi9tdR-cZkYUJQ--xI';
-    const url =
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDvpxpoUDSN3cyJPpi9tdR-cZkYUJQ--xI';
+  Future<void> _authenticate(
+      String email, String password, String urlSegment) async {
+    final url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyDvpxpoUDSN3cyJPpi9tdR-cZkYUJQ--xI';
 
     final response = await http
         .post(
@@ -29,5 +27,15 @@ class Auth with ChangeNotifier {
       throw (err);
     });
     print(json.decode(response.body));
+  }
+
+  //SIGN UP METHOD
+  Future<void> signUp(String email, String password) async {
+    return _authenticate(email, password, 'signUp');
+  }
+
+  //SIGN IN METHOD
+  Future<void> signIn(String email, String password) async {
+    return _authenticate(email, password, 'signInWithPassword');
   }
 }

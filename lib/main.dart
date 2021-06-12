@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SignUp(),
+        home: Login(),
         routes: {
           //Splash & Authentication Route
           SplashScreen.routeName: (context) => SplashScreen(),
