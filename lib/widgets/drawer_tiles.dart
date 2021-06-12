@@ -1,3 +1,4 @@
+import 'package:budge_food/screens/ProcessedOrders.dart';
 import 'package:flutter/material.dart';
 
 class ListOfDrawerTiles extends StatelessWidget {
@@ -15,7 +16,12 @@ class ListOfDrawerTiles extends StatelessWidget {
           icon: Icons.content_copy,
           onTap: () {
             print('Orders Screen');
-            Navigator.pushNamed(context, 'basket-screen');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProcessedOrders(),
+              ),
+            );
           },
         ),
         DrawerListTile(
