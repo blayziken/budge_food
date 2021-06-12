@@ -1,4 +1,6 @@
+import 'package:budge_food/models/http_exception.dart';
 import 'package:budge_food/provider/auth.dart';
+import 'package:budge_food/widgets/authFailedDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +22,6 @@ class _SignUpState extends State<SignUp> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
-//  final TextEditingController _confirmPass = TextEditingController();
 
   Widget _buildName() {
     return TextFormField(
@@ -183,16 +184,26 @@ class _SignUpState extends State<SignUp> {
     print(email);
     print(password);
 
-    await Provider.of<Auth>(context, listen: false)
-        .signUp(email, password)
-        .catchError((err) {
-      print(err);
-    }).then((_) {
-      setState(() {
-        _isLoading = false;
-      });
-    });
+    try {
+      await Provider.of<Auth>(context, listen: false).signUp(email, password);
+    } on HttpException catch (error) {
+      var errorMessage = 'Authentication failed';
+      if (error.toString().contains('EMAIL_EXISTS')) {
+        errorMessage = 'Email address already in use';
+      } else if (error.toString().contains('INVALID_EMAIL')) {
+        errorMessage = 'This is not a valid email address';
+      } else if (error.toString().contains('WEAK_PASSWORD')) {
+        errorMessage = 'Password is too weak';
+      }
+      showAuthErrorDialog(context, errorMessage);
+    } catch (error) {
+      const errorMessage = 'Could not authenticate you. Please try again later';
+      showAuthErrorDialog(context, errorMessage);
+    }
 
+    setState(() {
+      _isLoading = false;
+    });
 //                          Na
   }
 

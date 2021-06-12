@@ -1,8 +1,10 @@
 import 'package:budge_food/provider/auth.dart';
+import 'package:budge_food/widgets/authFailedDialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:budge_food/models/http_exception.dart';
 
 class Login extends StatefulWidget {
   static const routeName = '/login';
@@ -13,8 +15,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   var _isLoading = false;
-  String _email;
-  String _password;
+  String email;
+  String password;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -48,7 +50,7 @@ class _LoginState extends State<Login> {
         return null;
       },
       onSaved: (String value) {
-        _email = value;
+        email = value;
       },
     );
   }
@@ -83,7 +85,7 @@ class _LoginState extends State<Login> {
         return null;
       },
       onSaved: (String value) {
-        _password = value;
+        password = value;
       },
     );
   }
@@ -98,17 +100,31 @@ class _LoginState extends State<Login> {
       _isLoading = true;
     });
 
-    print(_email);
-    print(_password);
+    print(email);
+    print(password);
 
-    await Provider.of<Auth>(context, listen: false)
-        .signIn(_email, _password)
-        .catchError((err) {
-      print(err);
-    }).then((_) {
-      setState(() {
-        _isLoading = false;
-      });
+    try {
+      await Provider.of<Auth>(context, listen: false).signIn(email, password);
+    } on HttpException catch (error) {
+      var errorMessage = 'Authentication failed';
+      if (error.toString().contains('EMAIL_NOT_FOUND')) {
+        errorMessage = 'Email address not found';
+      } else if (error.toString().contains('INVALID_PASSWORD')) {
+        errorMessage = 'Password is wrong';
+      }
+      showAuthErrorDialog(context, errorMessage);
+    } catch (error) {
+      const errorMessage = 'Could not authenticate you. Please try again later';
+      showAuthErrorDialog(context, errorMessage);
+    }
+
+//        .catchError((err) {
+//      print(err);
+//    }).then((_) {
+//
+//    });
+    setState(() {
+      _isLoading = false;
     });
 
 //                          Na
