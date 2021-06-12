@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Basket.dart';
 import 'package:budge_food/widgets/basketsWidgets/widgets_functions.dart';
 
+import 'home.dart';
+
 class BasketScreen extends StatefulWidget {
   static const routeName = 'basket-screen';
+
   @override
   _BasketScreenState createState() => _BasketScreenState();
 }
@@ -53,7 +56,7 @@ class _BasketScreenState extends State<BasketScreen> {
 
   AppBar basketAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
         icon: Icon(
@@ -61,7 +64,11 @@ class _BasketScreenState extends State<BasketScreen> {
           color: Colors.black,
         ),
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(),
+              ));
         },
       ),
     );
