@@ -50,7 +50,7 @@ class BottomBasketDetails extends StatelessWidget {
           SizedBox(height: 40),
           OrderTotalColumn(),
           SizedBox(height: 10),
-          ProcessOrderButton(),
+          ProcessOrderButton(address: address),
         ],
       ),
     );

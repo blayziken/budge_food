@@ -90,13 +90,13 @@ class _BasketItemTileState extends State<BasketItemTile> {
                             print('details');
                             print(widget.newItem.foodOrder);
 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    FoodOrderDetails(order: foodOrder),
-                              ),
-                            );
+//                            Navigator.push(
+//                              context,
+//                              MaterialPageRoute(
+//                                builder: (context) =>
+//                                    FoodOrderDetails(order: foodOrder),
+//                              ),
+//                            );
                           },
                         ),
                         SizedBox(height: 15),
