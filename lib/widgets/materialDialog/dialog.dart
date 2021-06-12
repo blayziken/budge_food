@@ -1,10 +1,8 @@
-import 'package:budge_food/provider/Basket.dart';
 import 'package:budge_food/screens/BasketScreen.dart';
 import 'package:budge_food/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'materialDialog_icon_buttons.dart';
 import 'material_dialogs.dart';
-import 'package:provider/provider.dart';
 
 Future<void> materialDialog(context) {
   return Dialogs.materialDialog(
@@ -18,7 +16,7 @@ Future<void> materialDialog(context) {
         IconsOutlineButton(
           onPressed: () {
 //            Navigator.pushNamed(context, '/basket-screen');
-            Navigator.push(
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => BasketScreen(),
@@ -33,7 +31,7 @@ Future<void> materialDialog(context) {
         IconsButton(
           onPressed: () {
 //            Navigator.pushReplacementNamed(context, '/home-screen');
-            Navigator.push(
+            Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => HomeScreen(),
