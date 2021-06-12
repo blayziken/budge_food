@@ -1,10 +1,18 @@
+import 'package:budge_food/provider/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:provider/provider.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   static const routeName = '/login';
 
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  var _isLoading = false;
   String _email;
   String _password;
 
@@ -33,7 +41,7 @@ class Login extends StatelessWidget {
         ),
       ),
       validator: (String value) {
-        if (value.isEmpty) {
+        if (value.isEmpty || !value.contains('@')) {
           return 'Email required';
         }
 
@@ -78,6 +86,32 @@ class Login extends StatelessWidget {
         _password = value;
       },
     );
+  }
+
+  Future<void> _submit() async {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+    _formKey.currentState.save();
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    print(_email);
+    print(_password);
+
+    await Provider.of<Auth>(context, listen: false)
+        .signIn(_email, _password)
+        .catchError((err) {
+      print(err);
+    }).then((_) {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+
+//                          Na
   }
 
   @override
@@ -179,38 +213,37 @@ class Login extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
-                            GradientButton(
-                              increaseHeightBy: 20,
-                              increaseWidthBy: 50,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
+                            _isLoading
+                                ? Center(
+                                    child: CircularProgressIndicator(
+                                      backgroundColor: Colors.orange,
                                     ),
+                                  )
+                                : GradientButton(
+                                    increaseHeightBy: 20,
+                                    increaseWidthBy: 50,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          'Login',
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward,
+                                          size: 30.0,
+                                          color: Colors.white,
+                                        ),
+                                      ],
+                                    ),
+                                    callback: _submit,
+                                    gradient: Gradients.jShine,
                                   ),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    size: 30.0,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                              callback: () {
-                                if (!_formKey.currentState.validate()) {
-                                  return;
-                                }
-                                _formKey.currentState.save();
-
-                                print(_email);
-                                print(_password);
-                              },
-                              gradient: Gradients.jShine,
-                            ),
                           ],
                         ),
                       ),
