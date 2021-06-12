@@ -1,5 +1,6 @@
 import 'package:budge_food/provider/Basket.dart';
 import 'package:budge_food/widgets/materialDialog/dialog.dart';
+import 'package:budge_food/widgets/materialDialog/failedShowDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +8,6 @@ class FoodOrderScreen extends StatefulWidget {
   static const routeName = 'campus-order-screen';
 
   String campusName;
-
   FoodOrderScreen({this.campusName});
 
   @override
@@ -15,6 +15,15 @@ class FoodOrderScreen extends StatefulWidget {
 }
 
 class _FoodOrderScreenState extends State<FoodOrderScreen> {
+  final _form = GlobalKey<FormState>();
+  void _saveForm() {
+    final isValid = _form.currentState.validate();
+    if (!isValid) {
+      return;
+    }
+    _form.currentState.save();
+  }
+
   List<FoodItemWidget> foodList = [];
 
   addFoodItem() {
@@ -51,7 +60,7 @@ class _FoodOrderScreenState extends State<FoodOrderScreen> {
                     ),
                   ],
                 ),
-                FoodListView(foodList: foodList),
+                FoodListView(foodList: foodList, formKey: _form),
                 SizedBox(height: 10),
                 Expanded(
                   flex: 0,
@@ -102,48 +111,58 @@ class _FoodOrderScreenState extends State<FoodOrderScreen> {
                           ),
                         ),
                         onTap: () {
+                          _saveForm();
+
                           List order = [];
                           int totalAmount = 0;
 
                           for (var i = 0; i < foodList.length; i++) {
-                            totalAmount +=
-                                int.parse(foodList[i]._selectedValue2);
-                            order.add([
-                              foodList[i].myController.text,
-                              foodList[i]._selectedValue2
-                            ]);
-                          }
+                            if (foodList.isEmpty ||
+                                foodList[i].myController.text == '') {
+                              return failedShowDialog(context,
+                                  text: 'Something\'s wrong!');
+                            } else {
+                              totalAmount +=
+                                  int.parse(foodList[i]._selectedValue2);
+                              order.add({
+                                foodList[i].myController.text,
+                                foodList[i]._selectedValue2,
+                              });
 
-                          print(order.length);
-                          print(order);
-
-                          doneOrderMaterialDialog(
-                            context,
-                            cancelFunction: () {
-                              order.clear();
-                              Navigator.pop(context);
+                              print(order.length);
                               print(order);
-                            },
-                            addToBasketFunction: () {
-                              BasketItem _addFoodItem = BasketItem(
-                                foodName: widget.campusName,
-                                shop: widget.campusName,
-                                price: totalAmount.toString(),
-                                foodOrSnacks: 'food',
-                                imageName: widget.campusName.toLowerCase(),
-                                foodOrder: order,
+
+                              doneOrderMaterialDialog(
+                                context,
+                                cancelFunction: () {
+                                  order.clear();
+                                  Navigator.pop(context);
+                                  print(order);
+                                },
+                                addToBasketFunction: () {
+                                  BasketItem _addFoodItem = BasketItem(
+                                    foodName: widget.campusName,
+                                    shop: widget.campusName,
+                                    price: totalAmount.toString(),
+                                    foodOrSnacks: 'food',
+                                    imageName: widget.campusName.toLowerCase(),
+                                    foodOrder: [
+                                      '${widget.campusName} : $order'
+                                    ],
+                                  );
+
+                                  Provider.of<Basket>(context, listen: false)
+                                      .addToBasket(_addFoodItem);
+
+                                  print(
+                                      'Items in basket: ${Provider.of<Basket>(context, listen: false).getLength()}');
+
+                                  Navigator.pushReplacementNamed(
+                                      context, 'home-screen');
+                                },
                               );
-
-                              Provider.of<Basket>(context, listen: false)
-                                  .addToBasket(_addFoodItem);
-
-                              print(
-                                  'Items in basket: ${Provider.of<Basket>(context, listen: false).getLength()}');
-
-                              Navigator.pushReplacementNamed(
-                                  context, 'home-screen');
-                            },
-                          );
+                            }
+                          }
                         },
                       ),
                       Spacer(),
@@ -178,21 +197,14 @@ class _FoodItemWidgetState extends State<FoodItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Widget _buildName() {
+    Widget _buildTextField() {
       return TextFormField(
         controller: widget.myController,
         style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
-//        decoration: InputDecoration(
-//          enabledBorder: OutlineInputBorder(
-//            borderSide: BorderSide(
-////          color: Colors.green,
-//              width: 3,
-//            ),
-//          ),
-//        ),
-        validator: (String value) {
+        textInputAction: TextInputAction.next,
+        validator: (value) {
           if (value.isEmpty) {
-            return 'Name required';
+            return 'Cannot be empty!';
           }
           return null;
         },
@@ -208,7 +220,7 @@ class _FoodItemWidgetState extends State<FoodItemWidget> {
       child: Row(
 //        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(height: 50, width: 250, child: _buildName()),
+          Container(height: 50, width: 250, child: _buildTextField()),
 //          SizedBox(width: 10),
           Spacer(),
           Container(
@@ -252,9 +264,11 @@ class FoodListView extends StatelessWidget {
   const FoodListView({
     Key key,
     @required this.foodList,
+    this.formKey,
   }) : super(key: key);
 
   final List<FoodItemWidget> foodList;
+  final formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -262,19 +276,22 @@ class FoodListView extends StatelessWidget {
 
     return Expanded(
       flex: 0,
-      child: Container(
-        margin: EdgeInsets.only(top: 0, left: 40, right: 30),
-        height: size.height * 0.49,
-        width: size.height * 0.45,
-//        color: Colors.teal,
-        child: Column(
-          children: [
-            Flexible(
-              child: ListView.builder(
-                  itemCount: foodList.length,
-                  itemBuilder: (_, index) => foodList[index]),
-            )
-          ],
+      child: Form(
+        key: formKey,
+        child: Container(
+          margin: EdgeInsets.only(top: 0, left: 40, right: 30),
+          height: size.height * 0.49,
+          width: size.height * 0.45,
+//          color: Colors.teal,
+          child: Column(
+            children: [
+              Flexible(
+                child: ListView.builder(
+                    itemCount: foodList.length,
+                    itemBuilder: (_, index) => foodList[index]),
+              )
+            ],
+          ),
         ),
       ),
     );
