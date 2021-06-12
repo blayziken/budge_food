@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
           //Basket Screen
           BasketScreen.routeName: (context) => BasketScreen(),
 
+          //Specials and Food Details Screen
           SpecialsDetailScreen.routeName: (context) => SpecialsDetailScreen(),
           FoodOrderDetails.routeName: (context) => FoodOrderDetails(),
         },

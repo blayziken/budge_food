@@ -25,19 +25,22 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          child: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                CustomAppBar(scaffoldKey: _scaffoldKey),
-                SizedBox(height: 40),
-                HomeTabBar(tabController: _tabController),
-                SizedBox(height: 50),
-                TabBarViewWidget(tabController: _tabController),
-              ],
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height,
+            child: Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  CustomAppBar(scaffoldKey: _scaffoldKey),
+                  SizedBox(height: 40),
+                  HomeTabBar(tabController: _tabController),
+                  SizedBox(height: 30),
+                  TabBarViewWidget(tabController: _tabController),
+                ],
+              ),
             ),
           ),
         ),
