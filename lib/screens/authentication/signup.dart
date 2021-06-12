@@ -149,11 +149,9 @@ class _SignUpState extends State<SignUp> {
       validator: (String value) {
         if (value.isEmpty) {
           return 'Password required';
+        } else if (value != _password) {
+          return 'Password\'s don\'t match';
         }
-
-//        if (value != _password) {
-//          return 'Password\'s don\'t match';
-//        }
 
         return null;
       },
