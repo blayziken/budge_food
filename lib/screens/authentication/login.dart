@@ -91,12 +91,6 @@ class Login extends StatelessWidget {
             height: media.height,
             width: media.width,
             color: Colors.white,
-//          decoration: BoxDecoration(
-//            image: DecorationImage(
-//              image: AssetImage('images/itl.cat_trippy-cartoon-wallpaper.png'),
-//              fit: BoxFit.fill,
-//            ),
-//          ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -108,10 +102,9 @@ class Login extends StatelessWidget {
                       height: 150,
                       width: 150,
                       decoration: BoxDecoration(
-//                        color: Colors.grey,
                         image: DecorationImage(
                           image: AssetImage('images/coloured_logo.png'),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),

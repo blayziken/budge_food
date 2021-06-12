@@ -1,7 +1,8 @@
+import 'package:budge_food/provider/Orders.dart';
 import 'package:budge_food/screens/SpecialsDetail.dart';
 import 'package:budge_food/screens/authentication/login.dart';
 import 'package:budge_food/screens/authentication/signup.dart';
-import 'package:budge_food/screens/campus_newHall_education_dli_order/campus_order.dart';
+import 'package:budge_food/screens/campus_newHall_education_dli_order/food_order.dart';
 import 'package:budge_food/screens/campus_newHall_education_dli_order/order_details.dart';
 import 'package:budge_food/screens/home.dart';
 import 'package:budge_food/screens/splashs/introduction.dart';
@@ -18,14 +19,21 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => Basket(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => Basket(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Orders(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Budge Food',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen(),
+        home: SignUp(),
         routes: {
           //Splash & Authentication Route
           SplashScreen.routeName: (context) => SplashScreen(),
@@ -36,14 +44,13 @@ class MyApp extends StatelessWidget {
           //Home Route
           HomeScreen.routeName: (context) => HomeScreen(),
 
-          SpecialsDetailScreen.routeName: (context) => SpecialsDetailScreen(),
-
           //Campus, New Hall, DLI, Education Order Screens
-          CampusOrderScreen.routeName: (context) => CampusOrderScreen(),
+          FoodOrderScreen.routeName: (context) => FoodOrderScreen(),
 
           //Basket Screen
           BasketScreen.routeName: (context) => BasketScreen(),
 
+          SpecialsDetailScreen.routeName: (context) => SpecialsDetailScreen(),
           FoodOrderDetails.routeName: (context) => FoodOrderDetails(),
         },
       ),
