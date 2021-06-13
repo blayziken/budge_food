@@ -16,7 +16,6 @@ class _ProcessedOrdersState extends State<ProcessedOrders> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -24,11 +23,6 @@ class _ProcessedOrdersState extends State<ProcessedOrders> {
   void didChangeDependencies() {
     if (_isInit) {
       Provider.of<Orders>(context).getProcessedOrders();
-//      print('--------------------------------');
-//
-//      print(Provider.of<Orders>(context).orders.length);
-//      print('--------------------------------');
-//      print(Provider.of<Orders>(context).orders);
     }
     _isInit = false;
     super.didChangeDependencies();
