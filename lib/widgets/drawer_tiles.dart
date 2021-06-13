@@ -67,7 +67,8 @@ class ListOfDrawerTiles extends StatelessWidget {
           onTap: () {
             print('Sign Out');
 
-            Navigator.of(context).pop();
+//            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacementNamed('/');
             Provider.of<Auth>(context, listen: false).logout();
           },
         ),
