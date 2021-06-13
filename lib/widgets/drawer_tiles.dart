@@ -1,5 +1,7 @@
+import 'package:budge_food/provider/auth.dart';
 import 'package:budge_food/screens/ProcessedOrders.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ListOfDrawerTiles extends StatelessWidget {
   const ListOfDrawerTiles({
@@ -61,9 +63,12 @@ class ListOfDrawerTiles extends StatelessWidget {
         DrawerListTile(
           title: "Sign Out",
           color: Colors.red,
-          icon: Icons.logout,
+          icon: Icons.exit_to_app,
           onTap: () {
             print('Sign Out');
+
+            Navigator.of(context).pop();
+            Provider.of<Auth>(context, listen: false).logout();
           },
         ),
       ],
