@@ -1,7 +1,9 @@
+import 'package:budge_food/provider/auth.dart';
 import 'package:budge_food/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/widgets/custom_appBar.dart';
 import 'package:budge_food/widgets/homeWidgets/home_tabBar.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = 'home-screen';
