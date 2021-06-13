@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Orders.dart' as ord;
-import 'package:intl/intl.dart';
 
 class OrderItem extends StatelessWidget {
   final ord.ProcessedOrder order;
@@ -10,7 +9,7 @@ class OrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-    //
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -18,7 +17,6 @@ class OrderItem extends StatelessWidget {
           SizedBox(height: 20),
           Text(
             '${order.dateTime}',
-//            'a',
             style: TextStyle(
               fontSize: 17,
             ),
@@ -47,34 +45,15 @@ class OrderItem extends StatelessWidget {
                   Text(
                     'Order Added!',
                     style: TextStyle(
-//                          fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
                   ),
                   SizedBox(height: 5),
-                  InkWell(
-                    child: Text(
-                      'Your order has been added',
-                      style: TextStyle(
-//                          fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                      ),
+                  Text(
+                    'Your order has been added',
+                    style: TextStyle(
+                      fontSize: 13,
                     ),
-                    onTap: () {
-//                      Navigator.push(
-//                          context,
-//                          MaterialPageRoute(
-//                            builder: (context) => OrderDetail(
-//                              subTotal: order.amount,
-//                              phoneNumber: order.phoneNumber,
-//                              address: order.address,
-//                              order: order.order,
-//                              shopName: order.shopName,
-//                              date: order.dateTime,
-//                            ),
-//                          ));
-//
-                    },
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 13.0, bottom: 10, right: 10),
@@ -85,10 +64,10 @@ class OrderItem extends StatelessWidget {
                           height: media.height * 0.092,
                           decoration: BoxDecoration(
                             color: Colors.black,
-//                              image: DecorationImage(
-//                                image: AssetImage('images/image.png'),
-//                                fit: BoxFit.cover,
-//                              ),
+                            image: DecorationImage(
+                              image: AssetImage('images/coloured_logo.png'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         SizedBox(width: 13),
@@ -121,7 +100,6 @@ class OrderItem extends StatelessWidget {
               ),
             ),
           ),
-//          SizedBox(height: 15),
         ],
       ),
     );
