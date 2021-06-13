@@ -136,7 +136,6 @@ class _SignUpState extends State<SignUp> {
 
   Widget _buildConfirmPassword() {
     return TextFormField(
-//      controller: _confirmPass,
       obscureText: true,
       style: TextStyle(
         fontSize: 17.0,
@@ -179,7 +178,6 @@ class _SignUpState extends State<SignUp> {
       _isLoading = true;
     });
 
-//
     print(name);
     print(email);
     print(password);
@@ -218,13 +216,12 @@ class _SignUpState extends State<SignUp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 30.0),
+                padding: EdgeInsets.only(top: 50.0),
                 child: Center(
                   child: Container(
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
-//                      color: Colors.grey,
                       image: DecorationImage(
                         image: AssetImage('images/coloured_logo.png'),
                         fit: BoxFit.cover,
@@ -322,27 +319,23 @@ class _SignUpState extends State<SignUp> {
                           text: 'Already have an account? ',
                           style: TextStyle(
                             color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15.0,
+                            fontStyle: FontStyle.italic,
+                            fontSize: 13.0,
                           ),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Sign in',
                               style: TextStyle(
-                                color: Colors.indigo,
-                                fontWeight: FontWeight.w900,
+                                color: Colors.red,
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
-                          ),
-                        );
+                        Navigator.pushReplacementNamed(context, '/login');
                       },
                     ),
                   ),
