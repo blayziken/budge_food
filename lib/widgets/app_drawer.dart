@@ -30,6 +30,7 @@ class AppDrawer extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.blueGrey[700],
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -41,7 +42,7 @@ class AppDrawer extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Hello Tolu...',
+                      'Hello User..',
                       style: TextStyle(
                         fontSize: 20,
                         fontStyle: FontStyle.italic,
