@@ -8,7 +8,6 @@ import 'package:budge_food/screens/campus_newHall_education_dli_order/order_deta
 import 'package:budge_food/screens/home.dart';
 import 'package:budge_food/screens/splashs/introduction.dart';
 import 'package:budge_food/screens/splashs/splash.dart';
-import 'package:budge_food/test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/BasketScreen.dart';

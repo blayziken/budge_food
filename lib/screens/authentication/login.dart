@@ -118,16 +118,9 @@ class _LoginState extends State<Login> {
       showAuthErrorDialog(context, errorMessage);
     }
 
-//        .catchError((err) {
-//      print(err);
-//    }).then((_) {
-//
-//    });
     setState(() {
       _isLoading = false;
     });
-
-//                          Na
   }
 
   @override
