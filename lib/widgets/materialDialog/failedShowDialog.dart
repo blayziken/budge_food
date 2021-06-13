@@ -6,9 +6,7 @@ Future<dynamic> failedShowDialog(context, {String text}) {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Oops'),
-//          content: Text('There is an error, please check again🤨'),
           content: Text(text),
-
           actions: <Widget>[
             TextButton(
               child: Text('Back'),

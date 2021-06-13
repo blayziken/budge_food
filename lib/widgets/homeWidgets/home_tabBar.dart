@@ -27,7 +27,6 @@ class HomeTabBar extends StatelessWidget {
           indicatorSize: TabBarIndicatorSize.tab,
           indicatorPadding:
               EdgeInsets.only(top: 1, left: 2.2, right: 20, bottom: 3),
-
           indicator: ShapeDecoration(
             color: Color(0xFF416785),
             shape: RoundedRectangleBorder(

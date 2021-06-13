@@ -14,7 +14,6 @@ class HomeSearchWidget extends StatelessWidget {
       height: 50,
       width: media.width * 0.7,
       decoration: BoxDecoration(
-//        color: Colors.red,
         borderRadius: BorderRadius.circular(25),
         border: Border.all(color: Colors.black),
       ),

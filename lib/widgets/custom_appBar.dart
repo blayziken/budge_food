@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'homeWidgets/homeSearch_widget.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -25,9 +24,7 @@ class CustomAppBar extends StatelessWidget {
                 _scaffoldKey.currentState.openDrawer();
               },
             ),
-//            SizedBox(width: 5),
             HomeSearchWidget(),
-//            SizedBox(width: 5),
             InkWell(
               child: Icon(Icons.shopping_cart, size: 40),
               onTap: () {

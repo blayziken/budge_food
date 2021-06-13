@@ -15,12 +15,12 @@ Future<void> materialDialog(context) {
       actions: [
         IconsOutlineButton(
           onPressed: () {
-//            Navigator.pushNamed(context, '/basket-screen');
             Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BasketScreen(),
-                ));
+              context,
+              MaterialPageRoute(
+                builder: (context) => BasketScreen(),
+              ),
+            );
           },
           text: 'Check Basket',
           iconData: Icons.view_list,
@@ -30,12 +30,12 @@ Future<void> materialDialog(context) {
         ),
         IconsButton(
           onPressed: () {
-//            Navigator.pushReplacementNamed(context, '/home-screen');
             Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
-                ));
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(),
+              ),
+            );
           },
           text: "Home",
           iconData: Icons.add,
