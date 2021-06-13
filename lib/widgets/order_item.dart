@@ -17,7 +17,7 @@ class OrderItem extends StatelessWidget {
         children: [
           SizedBox(height: 20),
           Text(
-            DateFormat('dd/MM/yyyy hh:mm').format(order.dateTime),
+            '${order.dateTime}',
 //            'a',
             style: TextStyle(
               fontSize: 17,
