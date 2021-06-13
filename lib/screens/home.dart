@@ -29,13 +29,13 @@ class _HomeScreenState extends State<HomeScreen>
         child: SafeArea(
           child: Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height * 0.97,
             child: Padding(
               padding: EdgeInsets.all(15.0),
               child: Column(
                 children: [
                   CustomAppBar(scaffoldKey: _scaffoldKey),
-                  SizedBox(height: 40),
+                  SizedBox(height: 30),
                   HomeTabBar(tabController: _tabController),
                   SizedBox(height: 30),
                   TabBarViewWidget(tabController: _tabController),
