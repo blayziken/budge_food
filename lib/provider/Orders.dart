@@ -29,8 +29,9 @@ class Orders with ChangeNotifier {
   List<ProcessedOrder> _orders = [];
 
   final String authToken;
+  final String userId;
 
-  Orders(this.authToken, this._orders);
+  Orders(this.authToken, this.userId, this._orders);
 
   List<ProcessedOrder> get orders {
     return [..._orders];
@@ -38,8 +39,8 @@ class Orders with ChangeNotifier {
 
   // ADD ORDER IMPLEMENTATION
   Future<void> addProcessedOrder(ProcessedOrder processedOrders) {
-    const url =
-        'https://school-delivery-13721-default-rtdb.firebaseio.com/orders.json';
+    final url =
+        'https://school-delivery-13721-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken';
 
     return http
         .post(Uri.parse(url),
@@ -72,9 +73,9 @@ class Orders with ChangeNotifier {
   }
 
   // GET ORDERS IMPLEMENTATION
-  Future<void> getProcessedOrders() async {
+  Future<void> fetchProcessedOrders() async {
     final url =
-        'https://school-delivery-13721-default-rtdb.firebaseio.com/orders.json?auth=$authToken';
+        'https://school-delivery-13721-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -102,5 +103,11 @@ class Orders with ChangeNotifier {
     } catch (error) {
       throw (error);
     }
+  }
+
+  //isCompleted?
+  Future<void> toggleCompletedStatus() async {
+//    final oldStatus = isCompleted;
+//    isC
   }
 }
