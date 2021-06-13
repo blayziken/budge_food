@@ -74,3 +74,24 @@ Future<void> doneOrderMaterialDialog(context,
         ),
       ]);
 }
+
+Future<void> foodDetailsDialog(context, String text) {
+  return Dialogs.materialDialog(
+      msg: text,
+      title: "Details",
+      titleStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+      msgStyle: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+      color: Colors.white,
+      context: context,
+      actions: [
+        InkWell(
+          child: Icon(
+            Icons.done_all,
+            color: Colors.orange,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ]);
+}
