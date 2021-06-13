@@ -52,35 +52,37 @@ class _BasketItemTileState extends State<BasketItemTile> {
                 ),
               ),
               Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: media.width * 0.54,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          widget.newItem.foodName,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        InkWell(
-                          child: Text(
-                            'Check Details..',
+              Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+//                      width: media.width * 0.54,
+//                      color: Colors.yellow,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            widget.newItem.foodName,
                             style: TextStyle(
-                              fontSize: 15,
-                              fontStyle: FontStyle.italic,
-                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
                             ),
                           ),
-                          onTap: () {
-                            print('details');
-                            print(widget.newItem.foodOrder);
+                          SizedBox(height: 5),
+                          InkWell(
+                            child: Text(
+                              'Check Details..',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.green,
+                              ),
+                            ),
+                            onTap: () {
+                              print('details');
+                              print(widget.newItem.foodOrder);
 
 //                            Navigator.push(
 //                              context,
@@ -89,21 +91,23 @@ class _BasketItemTileState extends State<BasketItemTile> {
 //                                    FoodOrderDetails(order: foodOrder),
 //                              ),
 //                            );
-                          },
-                        ),
-                        SizedBox(height: 15),
-                        Text(
-                          widget.newItem.price,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            },
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 15),
+                          Text(
+                            widget.newItem.price,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              Spacer(),
             ],
           ),
         ),

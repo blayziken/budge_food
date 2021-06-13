@@ -1,3 +1,5 @@
+import 'package:budge_food/widgets/materialDialog/dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Orders.dart' as ord;
 
@@ -18,7 +20,8 @@ class OrderItem extends StatelessWidget {
           Text(
             '${order.dateTime}',
             style: TextStyle(
-              fontSize: 17,
+              fontSize: 15,
+              fontStyle: FontStyle.italic,
             ),
           ),
           SizedBox(height: 5),
@@ -30,7 +33,7 @@ class OrderItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
+                  color: Colors.grey.withOpacity(0.5),
                   offset: Offset(0, 3),
                   blurRadius: 7,
                   spreadRadius: 5,
@@ -49,11 +52,16 @@ class OrderItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 5),
-                  Text(
-                    'Your order has been added',
-                    style: TextStyle(
-                      fontSize: 13,
+                  InkWell(
+                    child: Text(
+                      'Your order has been added, check details here',
+                      style: TextStyle(
+                        fontSize: 13,
+                      ),
                     ),
+                    onTap: () {
+                      foodDetailsDialog(context, order.order.toString());
+                    },
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 13.0, bottom: 10, right: 10),
@@ -63,7 +71,6 @@ class OrderItem extends StatelessWidget {
                           width: media.width * 0.18,
                           height: media.height * 0.092,
                           decoration: BoxDecoration(
-                            color: Colors.black,
                             image: DecorationImage(
                               image: AssetImage('images/coloured_logo.png'),
                               fit: BoxFit.cover,
@@ -74,7 +81,7 @@ class OrderItem extends StatelessWidget {
                         Container(
                           width: media.width * 0.6,
                           height: media.height * 0.092,
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withOpacity(0.2),
                           child: Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Column(
@@ -87,7 +94,9 @@ class OrderItem extends StatelessWidget {
                                 ),
                                 Text(
                                   'Total: N${order.amount}',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),

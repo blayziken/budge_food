@@ -19,14 +19,22 @@ class CustomAppBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             InkWell(
-              child: Icon(Icons.list, size: 40),
+              child: Icon(
+                Icons.list,
+                size: 40,
+                color: Color(0xFF416785),
+              ),
               onTap: () {
                 _scaffoldKey.currentState.openDrawer();
               },
             ),
             HomeSearchWidget(),
             InkWell(
-              child: Icon(Icons.shopping_cart, size: 40),
+              child: Icon(
+                Icons.shopping_cart,
+                size: 40,
+                color: Color(0xFF416785),
+              ),
               onTap: () {
                 Navigator.pushNamed(context, 'basket-screen');
               },
