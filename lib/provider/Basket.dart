@@ -25,20 +25,7 @@ class BasketItem {
 }
 
 class Basket with ChangeNotifier {
-  List<BasketItem> _basketItems = [
-//    BasketItemTile(
-//        shopName: 'Mavis Campus',
-//        description: 'Scaling up satisfaction',
-//        price: 'N600'),
-//    BasketItemTile(
-//        shopName: 'Mavis Campus',
-//        description: 'Scaling up satisfaction',
-//        price: 'N600'),
-//    BasketItemTile(
-//        shopName: 'Mavis Campus',
-//        description: 'Scaling up satisfaction',
-//        price: 'N600'),
-  ];
+  List<BasketItem> _basketItems = [];
 
   // GET BASKET ITEMS
   List<BasketItem> get basketItems {

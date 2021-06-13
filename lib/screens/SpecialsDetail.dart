@@ -66,10 +66,6 @@ class SpecialsDetailScreen extends StatelessWidget {
                     price: price,
                     onRatingChanged: (value) {},
                   ),
-//                Text(
-//                  'Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple.',
-//                  style: TextStyle(height: 2),
-//                ),
                   Text(
                     description,
                     style: TextStyle(height: 2),
@@ -87,8 +83,6 @@ class SpecialsDetailScreen extends StatelessWidget {
             ),
           )
         ],
-
-//      Body(),
       ),
     );
   }
@@ -105,85 +99,6 @@ class SpecialsDetailScreen extends StatelessWidget {
     );
   }
 }
-
-//class Body extends StatelessWidget {
-////  final String shop;
-////  final String specialName;
-////  final String description;
-////  final String price;
-////  final double ratings;
-//
-////  const Body(
-////      {Key key,
-////      this.shop,
-////      this.specialName,
-////      this.description,
-////      this.price,
-////      this.ratings})
-////      : super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    Size size = MediaQuery.of(context).size;
-//
-//    return Column(
-//      children: [
-//        ItemImage(imgSrc: 'images/budge_logo.png'),
-//        SizedBox(height: 10),
-//        Expanded(
-//          child: Container(
-//            padding: EdgeInsets.all(20),
-//            decoration: BoxDecoration(
-//              color: Colors.white,
-//              borderRadius: BorderRadius.only(
-//                topRight: Radius.circular(30),
-//                topLeft: Radius.circular(30),
-//              ),
-//            ),
-//            child: Column(
-//              children: [
-//                shopName('shop'),
-//                TitlePriceRating(
-//                  name: 'specialName',
-//                  rating: 4,
-////                  ratings,
-//                  numOfReviews: 24,
-//                  price: '4',
-////                  price,
-//                  onRatingChanged: (value) {},
-//                ),
-////                Text(
-////                  'Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple. Nowadays, making printed materials have become fast, easy and simple.',
-////                  style: TextStyle(height: 2),
-////                ),
-//                Text(
-//                  'description',
-//                  style: TextStyle(height: 2),
-//                ),
-//                SizedBox(height: size.height * 0.05),
-//                OrderButton(
-//                  onTap: () {},
-//                ),
-//              ],
-//            ),
-//          ),
-//        )
-//      ],
-//    );
-//  }
-//
-//  Row shopName(String shopName) {
-//    return Row(
-//      children: [
-//        Icon(Icons.location_on, color: Colors.grey),
-//        SizedBox(
-//          width: 10,
-//        ),
-//        Text(shopName),
-//      ],
-//    );
-//  }
-//}
 
 class ItemImage extends StatelessWidget {
   final String imgSrc;

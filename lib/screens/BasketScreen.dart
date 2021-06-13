@@ -2,7 +2,6 @@ import 'package:budge_food/widgets/basketsWidgets/bottom_basketDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/provider/Basket.dart';
 import 'package:budge_food/widgets/basketsWidgets/widgets_functions.dart';
-
 import 'home.dart';
 
 class BasketScreen extends StatefulWidget {
@@ -46,7 +45,9 @@ class _BasketScreenState extends State<BasketScreen> {
               emptyBasketOrNot(context),
               SizedBox(height: 10),
               BottomBasketDetails(
-                  address: address, myAddressController: myAddressController),
+                address: address,
+                myAddressController: myAddressController,
+              ),
             ],
           ),
         ),
@@ -65,10 +66,11 @@ class _BasketScreenState extends State<BasketScreen> {
         ),
         onPressed: () {
           Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomeScreen(),
-              ));
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ),
+          );
         },
       ),
     );

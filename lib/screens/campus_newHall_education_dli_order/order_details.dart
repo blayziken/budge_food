@@ -15,23 +15,24 @@ class FoodOrderDetails extends StatelessWidget {
         for (var j = 0; j < order[i].length; j++) {
           foodList.add(
             Container(
-                width: 250,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('${order[i][j]}',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold)),
-                        Text('${order[i][++j]}',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    SizedBox(height: 50),
-                  ],
-                )),
+              width: 250,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('${order[i][j]}',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      Text('${order[i][++j]}',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  SizedBox(height: 50),
+                ],
+              ),
+            ),
           );
         }
       }
@@ -50,7 +51,6 @@ class FoodOrderDetails extends StatelessWidget {
         child: Container(
           width: media.width,
           height: media.height,
-//          color: Colors.red,
           child: Padding(
             padding: EdgeInsets.only(top: 50.0),
             child: Column(
@@ -59,10 +59,6 @@ class FoodOrderDetails extends StatelessWidget {
                   child: Container(
                     height: 400,
                     width: 350,
-//                    child: Icon(
-//                      Icons.donut_small,
-//                      size: 50,
-//                    ),
                     child: fullList(),
                   ),
                 ),

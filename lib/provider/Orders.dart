@@ -81,10 +81,6 @@ class Orders with ChangeNotifier {
       final response = await http.get(Uri.parse(url));
       final extractedData = json.decode(response.body) as Map<dynamic, dynamic>;
 
-      print('--------------------------------------------------------------');
-      print(extractedData);
-      print('--------------------------------------------------------------');
-
       final List<ProcessedOrder> loadedOrders = [];
       extractedData.forEach((id, orderData) {
         loadedOrders.add(ProcessedOrder(
@@ -106,8 +102,5 @@ class Orders with ChangeNotifier {
   }
 
   //isCompleted?
-  Future<void> toggleCompletedStatus() async {
-//    final oldStatus = isCompleted;
-//    isC
-  }
+//  Future<void> toggleCompletedStatus() async {}
 }

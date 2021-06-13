@@ -1,3 +1,16 @@
+import 'package:flutter/material.dart';
+
+class SplashScreenn extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('Loading'),
+      ),
+    );
+  }
+}
+
 //import 'package:budge_food/provider/Orders.dart';
 //import 'package:budge_food/provider/auth.dart';
 //import 'package:budge_food/screens/SpecialsDetail.dart';

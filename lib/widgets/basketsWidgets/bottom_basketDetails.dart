@@ -29,7 +29,9 @@ class BottomBasketDetails extends StatelessWidget {
             ),
           ),
           AddressTextField(
-              address: address, myAddressController: myAddressController),
+            address: address,
+            myAddressController: myAddressController,
+          ),
           SizedBox(height: 20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

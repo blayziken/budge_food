@@ -8,13 +8,11 @@ class DisplayCardNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-//                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           height: 35,
           width: 35,
           decoration: BoxDecoration(
-//            color: Colors.black,
             image: DecorationImage(
               image: AssetImage('images/master-card.png'),
               fit: BoxFit.cover,
@@ -34,7 +32,6 @@ class DisplayCardNumber extends StatelessWidget {
           height: 35,
           width: 35,
           decoration: BoxDecoration(
-//            color: Colors.black,
             image: DecorationImage(
               image: AssetImage('images/credit_card.png'),
               fit: BoxFit.cover,

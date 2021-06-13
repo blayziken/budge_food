@@ -54,7 +54,6 @@ List<PageViewModel> pages = [
           width: 300,
           color: Colors.blue,
         ),
-//
       ),
     ),
     decoration: PageDecoration(

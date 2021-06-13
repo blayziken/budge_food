@@ -204,7 +204,6 @@ class _SignUpState extends State<SignUp> {
     setState(() {
       _isLoading = false;
     });
-//                          Na
   }
 
   @override
@@ -213,13 +212,6 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-//            color: Colors.yellow,
-//          decoration: BoxDecoration(
-//            image: DecorationImage(
-//              image: AssetImage('images/papers_new.png'),
-//              fit: BoxFit.fill,
-//            ),
-//          ),
           height: media.height,
           width: double.infinity,
           child: Column(
@@ -257,16 +249,12 @@ class _SignUpState extends State<SignUp> {
               Expanded(
                 flex: 10,
                 child: Container(
-//                  height: 350.0,
                   height: media.height / 1.8,
-//                color: Colors.yellow,
-//                  margin: EdgeInsets.only(top: 50.0),
                   child: Padding(
                       padding: EdgeInsets.only(left: 40, right: 40, top: 25),
                       child: Form(
                         key: _formKey,
                         child: Column(
-//                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             _buildName(),
                             Spacer(),
@@ -349,7 +337,6 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       onTap: () {
-//                        Navigator.pushReplacementNamed(context, '/login');
                         Navigator.push(
                           context,
                           MaterialPageRoute(
