@@ -9,13 +9,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void initState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 5),
-        () => Navigator.pushNamedAndRemoveUntil(
-            context, '/introduction-slide', (route) => false));
-  }
+//  void initState() {
+//    super.initState();
+//    Timer(
+//        Duration(seconds: 5),
+//        () => Navigator.pushNamedAndRemoveUntil(
+//            context, '/introduction-slide', (route) => false));
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 style: TextStyle(
                     fontFamily: 'Pacifico',
                     fontSize: 40,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     color: Colors.white),
               ),
             ),
