@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class ProcessedOrder {
   final String id;
@@ -9,7 +10,7 @@ class ProcessedOrder {
   final String address;
 //  final String phoneNumber;
 //  final String shopName;
-  final DateTime dateTime;
+  final String dateTime;
   final bool isCompleted = false;
 
   ProcessedOrder({
@@ -20,16 +21,22 @@ class ProcessedOrder {
 //    @required this.shopName,
     @required this.address,
     this.dateTime,
+//    this.isCompleted,
   });
 }
 
 class Orders with ChangeNotifier {
   List<ProcessedOrder> _orders = [];
 
+  final String authToken;
+
+  Orders(this.authToken, this._orders);
+
   List<ProcessedOrder> get orders {
     return [..._orders];
   }
 
+  // ADD ORDER IMPLEMENTATION
   Future<void> addProcessedOrder(ProcessedOrder processedOrders) {
     const url =
         'https://school-delivery-13721-default-rtdb.firebaseio.com/orders.json';
@@ -43,7 +50,10 @@ class Orders with ChangeNotifier {
 //          'phoneNumber': processedOrders.phoneNumber,
 //          'shopName': processedOrders.shopName,
               'isCompleted': processedOrders.isCompleted,
-              'dateTime': DateTime.now().toString(),
+              'dateTime': DateFormat('dd/MM/yyyy hh:mm').format(DateTime.now()),
+              //            DateFormat('dd/MM/yyyy hh:mm').format(order.dateTime),
+
+//              'dateTime': DateTime.now().toString(),
             }))
         .then((response) {
       final newOrder = ProcessedOrder(
@@ -53,7 +63,7 @@ class Orders with ChangeNotifier {
         order: processedOrders.order,
 //        phoneNumber: processedOrders.phoneNumber,
 //        shopName: processedOrders.shopName,
-        dateTime: DateTime.now(),
+        dateTime: DateFormat('dd/MM/yyyy hh:mm').format(DateTime.now()),
       );
 
       _orders.insert(0, newOrder);
@@ -62,5 +72,39 @@ class Orders with ChangeNotifier {
     }).catchError((error) {
       throw (error);
     });
+  }
+
+  // GET ORDERS IMPLEMENTATION
+  Future<void> getProcessedOrders() async {
+    final url =
+        'https://school-delivery-13721-default-rtdb.firebaseio.com/orders.json?auth=$authToken';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+//      print(response);
+      final extractedData = json.decode(response.body) as Map<dynamic, dynamic>;
+
+      print('--------------------------------------------------------------');
+      print(extractedData);
+      print('--------------------------------------------------------------');
+
+      final List<ProcessedOrder> loadedOrders = [];
+      extractedData.forEach((id, orderData) {
+        loadedOrders.add(ProcessedOrder(
+          id: id,
+          address: orderData['address'],
+          amount: orderData['amount'],
+          dateTime: orderData['dateTime'],
+          order: orderData['order'],
+//          isCompleted: orderData['isCompleted'],
+        ));
+      });
+
+      print(loadedOrders);
+      _orders = loadedOrders;
+      notifyListeners();
+    } catch (error) {
+      throw (error);
+    }
   }
 }

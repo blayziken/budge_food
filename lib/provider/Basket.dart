@@ -55,7 +55,7 @@ class Basket with ChangeNotifier {
     _basketItems.insert(
       0,
       BasketItem(
-        id: DateTime.now().toString(),
+//        id: DateTime.now().toString(),
         foodName: basketItem.foodName,
         shop: basketItem.shop,
         price: basketItem.price,

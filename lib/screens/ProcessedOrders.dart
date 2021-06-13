@@ -1,4 +1,5 @@
 import 'package:budge_food/provider/Orders.dart';
+import 'package:budge_food/provider/auth.dart';
 import 'package:budge_food/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,28 @@ class ProcessedOrders extends StatefulWidget {
 }
 
 class _ProcessedOrdersState extends State<ProcessedOrders> {
+  var _isInit = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      Provider.of<Orders>(context).getProcessedOrders();
+//      print('--------------------------------');
+//
+//      print(Provider.of<Orders>(context).orders.length);
+//      print('--------------------------------');
+//      print(Provider.of<Orders>(context).orders);
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     final orderData = Provider.of<Orders>(context);

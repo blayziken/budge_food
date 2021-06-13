@@ -211,17 +211,20 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 28.0, top: 20),
-                        child: Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.italic,
+                      InkWell(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 28.0, top: 20),
+                          child: Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FontStyle.italic,
+                            ),
                           ),
                         ),
+                        onTap: () {},
                       ),
                       Spacer(),
                       Padding(
