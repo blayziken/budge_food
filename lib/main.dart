@@ -8,6 +8,7 @@ import 'package:budge_food/screens/campus_newHall_education_dli_order/order_deta
 import 'package:budge_food/screens/home.dart';
 import 'package:budge_food/screens/splashs/introduction.dart';
 import 'package:budge_food/screens/splashs/splash.dart';
+import 'package:budge_food/test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/BasketScreen.dart';
@@ -42,9 +43,19 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: auth.isAuth ? HomeScreen() : Login(),
+          home: auth.isAuth // Are we authenticated ?
+              ? HomeScreen() // If yes, show the Home Screen
+              : FutureBuilder(
+                  //If not, run Future Builder
+                  future: auth.tryAutoLogin(), //Try AutoLogin
+                  builder: (context, authResultSnapshot) => authResultSnapshot
+                              .connectionState ==
+                          ConnectionState.waiting
+                      ? SplashScreen() //Whilst we're waiting for a result, show the Splash Screen
+                      : Login(), //If we're done waiting, show the Login Screen
+                ),
           routes: {
-            //Splash & Authentication Route
+            //Splash & Authentication Routes
             SplashScreen.routeName: (context) => SplashScreen(),
             IntroductionSlide.routeName: (context) => IntroductionSlide(),
             Login.routeName: (context) => Login(),
