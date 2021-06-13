@@ -51,9 +51,6 @@ class Orders with ChangeNotifier {
 //          'shopName': processedOrders.shopName,
               'isCompleted': processedOrders.isCompleted,
               'dateTime': DateFormat('dd/MM/yyyy hh:mm').format(DateTime.now()),
-              //            DateFormat('dd/MM/yyyy hh:mm').format(order.dateTime),
-
-//              'dateTime': DateTime.now().toString(),
             }))
         .then((response) {
       final newOrder = ProcessedOrder(
@@ -81,7 +78,6 @@ class Orders with ChangeNotifier {
 
     try {
       final response = await http.get(Uri.parse(url));
-//      print(response);
       final extractedData = json.decode(response.body) as Map<dynamic, dynamic>;
 
       print('--------------------------------------------------------------');

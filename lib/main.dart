@@ -28,36 +28,41 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Basket(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => Orders(),
+        ChangeNotifierProxyProvider<Auth, Orders>(
+          update: (context, auth, previousOrders) => Orders(
+            auth.token,
+            previousOrders == null ? [] : previousOrders.orders,
+          ),
         ),
       ],
-      child: MaterialApp(
-        title: 'Budge Food',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+      child: Consumer<Auth>(
+        builder: (context, auth, _) => MaterialApp(
+          title: 'Budge Food',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: auth.isAuth ? HomeScreen() : Login(),
+          routes: {
+            //Splash & Authentication Route
+            SplashScreen.routeName: (context) => SplashScreen(),
+            IntroductionSlide.routeName: (context) => IntroductionSlide(),
+            Login.routeName: (context) => Login(),
+            SignUp.routeName: (context) => SignUp(),
+
+            //Home Route
+            HomeScreen.routeName: (context) => HomeScreen(),
+
+            //Campus, New Hall, DLI, Education Order Screens
+            FoodOrderScreen.routeName: (context) => FoodOrderScreen(),
+
+            //Basket Screen
+            BasketScreen.routeName: (context) => BasketScreen(),
+
+            //Specials and Food Details Screen
+            SpecialsDetailScreen.routeName: (context) => SpecialsDetailScreen(),
+            FoodOrderDetails.routeName: (context) => FoodOrderDetails(),
+          },
         ),
-        home: Login(),
-        routes: {
-          //Splash & Authentication Route
-          SplashScreen.routeName: (context) => SplashScreen(),
-          IntroductionSlide.routeName: (context) => IntroductionSlide(),
-          Login.routeName: (context) => Login(),
-          SignUp.routeName: (context) => SignUp(),
-
-          //Home Route
-          HomeScreen.routeName: (context) => HomeScreen(),
-
-          //Campus, New Hall, DLI, Education Order Screens
-          FoodOrderScreen.routeName: (context) => FoodOrderScreen(),
-
-          //Basket Screen
-          BasketScreen.routeName: (context) => BasketScreen(),
-
-          //Specials and Food Details Screen
-          SpecialsDetailScreen.routeName: (context) => SpecialsDetailScreen(),
-          FoodOrderDetails.routeName: (context) => FoodOrderDetails(),
-        },
       ),
     );
   }
