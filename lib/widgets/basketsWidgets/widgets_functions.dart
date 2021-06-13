@@ -27,10 +27,10 @@ Widget emptyBasketOrNot(context) {
             ),
           ),
           decoration: BoxDecoration(
-//              color: Colors.black,
-              image: DecorationImage(
-            image: AssetImage('images/empty_cart.jpg'),
-          )),
+            image: DecorationImage(
+              image: AssetImage('images/empty_cart.jpg'),
+            ),
+          ),
         ),
       ),
     );
@@ -39,7 +39,6 @@ Widget emptyBasketOrNot(context) {
       flex: 0,
       child: Container(
         height: size.height * 0.39,
-//        color: Colors.teal,
         child: ListView.builder(
           itemCount: basketData.basketItems.length,
           itemBuilder: (context, index) =>

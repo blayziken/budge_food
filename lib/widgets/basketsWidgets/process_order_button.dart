@@ -1,14 +1,11 @@
-import 'package:budge_food/widgets/materialDialog/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:budge_food/widgets/materialDialog/failedShowDialog.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:budge_food/provider/Basket.dart';
 import 'package:budge_food/provider/Orders.dart';
 
 class ProcessOrderButton extends StatefulWidget {
   final String address;
-//  final int amount;
 
   const ProcessOrderButton({Key key, this.address}) : super(key: key);
 
@@ -68,7 +65,6 @@ class _ProcessOrderButtonState extends State<ProcessOrderButton> {
                     order: allOrdersInBasket,
                     address: widget.address,
                     amount: basketProvider.totalBasketAmount + 200,
-//                    dateTime: DateFormat('dd/MM/yyyy hh:mm').format(DateTime.now()),
                   );
 
                   processedOrder

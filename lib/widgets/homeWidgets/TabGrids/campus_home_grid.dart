@@ -22,7 +22,6 @@ class CampusHomeGrid extends StatelessWidget {
             gradient: LinearGradient(
               colors: [
                 Colors.lightGreen[700],
-//              Colors.lightGreen[700],
                 Colors.red,
               ],
               begin: Alignment(0, -1),
@@ -47,7 +46,6 @@ class CampusHomeGrid extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-//            SizedBox(width: 10),
                 Padding(
                   padding: EdgeInsets.only(top: 18.0),
                   child: Column(
@@ -64,7 +62,6 @@ class CampusHomeGrid extends StatelessWidget {
                         description,
                         style: TextStyle(
                           fontSize: 20,
-//                      fontWeight: FontWeight.bold,
                           color: Colors.green,
                           letterSpacing: 1,
                         ),

@@ -22,7 +22,6 @@ class EducationGrid extends StatelessWidget {
             gradient: LinearGradient(
               colors: [
                 Colors.lightGreen[700],
-//              Colors.lightGreen[700],
                 Colors.red,
               ],
               begin: Alignment(0, -1),
@@ -65,7 +64,6 @@ class EducationGrid extends StatelessWidget {
                         description,
                         style: TextStyle(
                           fontSize: 18,
-//                      fontWeight: FontWeight.bold,
                           color: Colors.green,
                           letterSpacing: 1,
                         ),
@@ -74,7 +72,6 @@ class EducationGrid extends StatelessWidget {
                     ],
                   ),
                 ),
-//            Spacer(),
               ],
             ),
           ),

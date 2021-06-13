@@ -14,14 +14,6 @@ class SpecialsHomeGrid extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return InkWell(
       child: Container(
-//        padding: EdgeInsets.only(left: 15, right: 15),
-//        decoration: BoxDecoration(
-//          color: Colors.white,
-//          borderRadius: BorderRadius.circular(13),
-//          border: Border.all(
-//            color: Colors.purple,
-//          ),
-//        ),
         child: OutlineGradientButton(
           gradient: LinearGradient(
             colors: [Color(0XFF416785), Color(0XFFFFFFFF)],
@@ -32,14 +24,10 @@ class SpecialsHomeGrid extends StatelessWidget {
           radius: Radius.circular(13),
           child: Column(
             children: [
-//          Spacer(),
               Container(
-//                height: 160,
-//                width: 160,
                 height: size.height * 0.185,
                 width: size.width * 0.4,
                 decoration: BoxDecoration(
-//                  color: Colors.grey,
                   image: DecorationImage(
                     image: AssetImage('images/snacks/$imageName.png'),
                     fit: BoxFit.cover,

@@ -34,13 +34,6 @@ class HomeTabBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-//          BubbleTabIndicator(
-//            indicatorHeight: 40,
-//            indicatorColor: Color(0xFF416785),
-//            tabBarIndicatorSize: TabBarIndicatorSize.tab,
-////            insets: EdgeInsets.only(top: -1, left: 1, right: 16, bottom: 0),
-//            insets: EdgeInsets.only(top: -1, left: 2, right: 16, bottom: 1),
-//          ),
           tabs: <Widget>[
             HomeTabs('Specials'),
             HomeTabs('Campus'),

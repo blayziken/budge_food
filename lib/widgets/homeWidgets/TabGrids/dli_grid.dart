@@ -22,7 +22,6 @@ class DliGrid extends StatelessWidget {
             gradient: LinearGradient(
               colors: [
                 Colors.lightGreen[700],
-//              Colors.lightGreen[700],
                 Colors.red,
               ],
               begin: Alignment(0, -1),
@@ -48,7 +47,6 @@ class DliGrid extends StatelessWidget {
                         AssetImage('images/food/$educationName.png'),
                   ),
                 ),
-//            Spacer(),
                 Padding(
                   padding: EdgeInsets.only(top: 18.0),
                   child: Column(
@@ -65,7 +63,6 @@ class DliGrid extends StatelessWidget {
                         description,
                         style: TextStyle(
                           fontSize: 18,
-//                      fontWeight: FontWeight.bold,
                           color: Colors.green,
                           letterSpacing: 1,
                         ),
@@ -74,7 +71,6 @@ class DliGrid extends StatelessWidget {
                     ],
                   ),
                 ),
-//            Spacer(),
               ],
             ),
           ),
